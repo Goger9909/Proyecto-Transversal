@@ -65,6 +65,6 @@ public class Alumno {
     
     public String toString(){
         
-        return null;
+        return "idAlumno" +idAlumno+ " apellido y nombre" +apellido+""+nombre+ " fecha de nacimiento " +fechaNac;
     }
 }
