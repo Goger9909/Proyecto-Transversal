@@ -19,6 +19,7 @@ public class ProyectoTransversal {
         String holass;
         String HOLA;
         String ComoEstas;
+        String Hola; 
     }
     
 }
