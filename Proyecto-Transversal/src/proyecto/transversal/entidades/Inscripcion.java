@@ -26,7 +26,6 @@ public class Inscripcion {
     public int getIdIncripcion() {
         return idIncripcion;
     }
-
     public void setIdIncripcion(int idIncripcion) {
         this.idIncripcion = idIncripcion;
     }
@@ -34,7 +33,6 @@ public class Inscripcion {
     public Alumno getAlumno() {
         return alumno;
     }
-
     public void setAlumno(Alumno alumno) {
         this.alumno = alumno;
     }
@@ -42,7 +40,6 @@ public class Inscripcion {
     public Materia getMateria() {
         return materia;
     }
-
     public void setMateria(Materia materia) {
         this.materia = materia;
     }
@@ -50,7 +47,6 @@ public class Inscripcion {
     public double getNota() {
         return nota;
     }
-
     public void setNota(double nota) {
         this.nota = nota;
     }
@@ -59,11 +55,4 @@ public class Inscripcion {
     public String toString() {
         return "Inscripcion{" + "idIncripcion=" + idIncripcion + ", alumno=" + alumno + ", materia=" + materia + ", nota=" + nota + '}';
     }
-    
-    
-    
-    
-    
-    
-    
 }
