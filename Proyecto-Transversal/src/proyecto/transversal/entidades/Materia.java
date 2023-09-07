@@ -27,7 +27,6 @@ public class Materia {
     public int getIdMateria() {
         return idMateria;
     }
-
     public void setIdMateria(int idMateria) {
         this.idMateria = idMateria;
     }
@@ -35,7 +34,6 @@ public class Materia {
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -43,7 +41,6 @@ public class Materia {
     public int getAnioMateria() {
         return anioMateria;
     }
-
     public void setAnioMateria(int anioMateria) {
         this.anioMateria = anioMateria;
     }
@@ -51,7 +48,6 @@ public class Materia {
     public boolean isActivo() {
         return activo;
     }
-
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
@@ -60,6 +56,4 @@ public class Materia {
     public String toString() {
         return "Materia " + "id Materia: " + idMateria + ", nombre: " + nombre + ", año Materia: " + anioMateria ;
     }
-    
-    
 }
