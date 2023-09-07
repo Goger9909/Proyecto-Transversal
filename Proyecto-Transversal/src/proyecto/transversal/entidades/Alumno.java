@@ -31,7 +31,6 @@ public class Alumno {
     public int getIdAlumno() {
         return idAlumno;
     }
-
     public void setIdAlumno(int idAlumno) {
         this.idAlumno = idAlumno;
     }
@@ -39,7 +38,6 @@ public class Alumno {
     public String getApellido() {
         return apellido;
     }
-
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
@@ -47,7 +45,6 @@ public class Alumno {
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -55,7 +52,6 @@ public class Alumno {
     public LocalDate getFechaNac() {
         return fechaNac;
     }
-
     public void setFechaNac(LocalDate fechaNac) {
         this.fechaNac = fechaNac;
     }
@@ -63,7 +59,6 @@ public class Alumno {
     public boolean isActivo() {
         return activo;
     }
-
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
