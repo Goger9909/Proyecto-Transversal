@@ -35,6 +35,10 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
         jLabel2.setText("Gestión de Alumnos");
 
         DNI.setText("DNI: ");
@@ -93,6 +97,11 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         });
 
         jSalir.setText("Salir");
+        jSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,24 +121,22 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                         .addComponent(jEliminar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtEstado)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jtDNI)
+                            .addComponent(jtApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtEstado, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtFechaNac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jBuscar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jGuardar)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jtFechaNac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jtNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtDNI)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jBuscar))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jSalir)))))
-                .addContainerGap(102, Short.MAX_VALUE))
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addComponent(jSalir)))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,7 +164,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(FechaNac)
                     .addComponent(jtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNuevo)
                     .addComponent(jEliminar)
@@ -219,6 +226,10 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         jtDNI.setEnabled(false);jtApellido.setEnabled(false);jtNombre.setEnabled(false);jtEstado.setEnabled(false);jtFechaNac.setEnabled(false);
         jEliminar.setEnabled(false);jGuardar.setEnabled(false);
     }//GEN-LAST:event_jGuardarActionPerformed
+
+    private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
+        
+    }//GEN-LAST:event_jSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
