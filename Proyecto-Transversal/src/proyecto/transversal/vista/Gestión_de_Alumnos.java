@@ -1,4 +1,4 @@
-package proyecto.transversal;
+package proyecto.transversal.vista;
 
 public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
 
