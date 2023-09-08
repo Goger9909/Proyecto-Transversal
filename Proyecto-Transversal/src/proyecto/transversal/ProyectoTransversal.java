@@ -3,8 +3,7 @@ package proyecto.transversal;
 
 import java.sql.Connection;
 import proyecto.transversal.accesoADatos.Conexion;
-import proyecto.transversal.accesoADatos.MateriaData;
-import proyecto.transversal.entidades.Materia;
+
 
 
 public class ProyectoTransversal {
