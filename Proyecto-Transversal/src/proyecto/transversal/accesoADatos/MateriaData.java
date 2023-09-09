@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyecto.transversal.entidades.Materia;
 
@@ -63,15 +65,55 @@ public class MateriaData {
             
             }
                     
-                    } catch (SQLException ex) {
+            } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Materia" + ex);
         }
         
         }
         
+        public void eliminarMateria(int id){
         
+        String sql = "UPDATE materia SET estado=0 WHERE idMateria=?";
         
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int exito = ps.executeUpdate();
+            if(exito==1){
+                JOptionPane.showMessageDialog(null, "Materia Eliminada");
+            }
+            
+                   
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
+        }
+        }
         
+        public Materia buscarMateria(int id){
+        
+            String sql = "SELECT nombre, año, estado FROM materia WHERE idMateria=?";
+            Materia materia = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs= ps.executeQuery();
+            if(rs.next()){
+                
+                materia = new Materia();
+                materia.setIdMateria(id);
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnioMateria(rs.getInt("año"));
+                materia.setActivo(true);
+            } else{
+            JOptionPane.showMessageDialog(null, "No existe una materia con ese ID");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
+        }
+           return materia;        
+        }
     
    
 }
+
