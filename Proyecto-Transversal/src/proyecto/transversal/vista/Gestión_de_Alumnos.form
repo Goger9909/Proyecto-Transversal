@@ -199,7 +199,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBuscarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jtFechaNac">
+        <Component class="org.netbeans.modules.form.InvalidComponent" name="jtFechaNac">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
