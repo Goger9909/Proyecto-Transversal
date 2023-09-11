@@ -1,5 +1,5 @@
 package proyecto.transversal.vista;
-
+import proyecto.transversal.accesoADatos.AlumnoData;
 public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
 
     public Gestión_de_Alumnos() {
@@ -167,8 +167,10 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
 
     private void jGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarActionPerformed
         
-        
-        
+        //(dni, apellido, nombre, fechaNacimiento, estado
+        Alumno=(DNI,Apellido,Nombre,FechaNac,Estado)
+        AlumnoData AD=new AlumnoData();
+        AD.agregarAlumno(alumno);
         
         DNI.setEnabled(false);Nombre.setEnabled(false);Apellido.setEnabled(false);Estado.setEnabled(false);FechaNac.setEnabled(false);
         jtDNI.setEnabled(false);jtApellido.setEnabled(false);jtNombre.setEnabled(false);jtEstado.setEnabled(false);jtFechaNac.setEnabled(false);
