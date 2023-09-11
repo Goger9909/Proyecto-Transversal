@@ -39,30 +39,42 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel2.setText("Gestión de Alumnos");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 6, -1, -1));
 
         DNI.setText("DNI: ");
         DNI.setEnabled(false);
+        jPanel1.add(DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 49, -1, -1));
 
         jtDNI.setEnabled(false);
+        jPanel1.add(jtDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 45, 125, -1));
 
         Nombre.setText("Nombre: ");
         Nombre.setEnabled(false);
+        jPanel1.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 131, -1, -1));
 
         Apellido.setText("Apellido: ");
         Apellido.setEnabled(false);
+        jPanel1.add(Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 90, -1, -1));
 
         jtApellido.setEnabled(false);
+        jPanel1.add(jtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 86, 125, -1));
 
         jtNombre.setEnabled(false);
+        jPanel1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 127, 125, -1));
 
         Estado.setText("Estado: ");
         Estado.setEnabled(false);
+        jPanel1.add(Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 168, -1, -1));
 
         FechaNac.setText("Fecha de Nacimiento: ");
         FechaNac.setEnabled(false);
+        jPanel1.add(FechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 205, -1, -1));
 
         jtEstado.setEnabled(false);
+        jPanel1.add(jtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 168, -1, -1));
 
         jBuscar.setText("Buscar");
         jBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -70,8 +82,10 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                 jBuscarActionPerformed(evt);
             }
         });
+        jPanel1.add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 45, -1, -1));
 
         jtFechaNac.setEnabled(false);
+        jPanel1.add(jtFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 205, 125, -1));
 
         jNuevo.setText("Nuevo");
         jNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +93,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                 jNuevoActionPerformed(evt);
             }
         });
+        jPanel1.add(jNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 299, -1, -1));
 
         jEliminar.setText("Eliminar");
         jEliminar.setEnabled(false);
@@ -87,6 +102,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                 jEliminarActionPerformed(evt);
             }
         });
+        jPanel1.add(jEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 299, -1, -1));
 
         jGuardar.setText("Guardar");
         jGuardar.setEnabled(false);
@@ -95,6 +111,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                 jGuardarActionPerformed(evt);
             }
         });
+        jPanel1.add(jGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 299, -1, -1));
 
         jSalir.setText("Salir");
         jSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -102,76 +119,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                 jSalirActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Nombre)
-                    .addComponent(DNI)
-                    .addComponent(Apellido)
-                    .addComponent(FechaNac)
-                    .addComponent(Estado)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jNuevo)
-                        .addGap(18, 18, 18)
-                        .addComponent(jEliminar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jtDNI)
-                            .addComponent(jtApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtEstado, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtFechaNac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jBuscar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jGuardar)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addComponent(jSalir)))
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DNI)
-                    .addComponent(jtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Apellido))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Nombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Estado)
-                    .addComponent(jtEstado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FechaNac)
-                    .addComponent(jtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jNuevo)
-                    .addComponent(jEliminar)
-                    .addComponent(jGuardar)
-                    .addComponent(jSalir))
-                .addContainerGap())
-        );
+        jPanel1.add(jSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 299, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
