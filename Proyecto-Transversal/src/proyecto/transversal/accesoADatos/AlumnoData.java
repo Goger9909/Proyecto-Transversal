@@ -22,7 +22,7 @@ public class AlumnoData {
     }
 
     public void agregarAlumno(Alumno alumno) {
-        String sql = "INSERT INTO alumno (dni, apellido, nombre, fechaNacimiento, estado) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO (dni, apellido, nombre, fechaNacimiento, estado) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
@@ -45,7 +45,7 @@ public class AlumnoData {
         }
 
     }
-    public Alumno buscarAlumno(int id){
+    public void buscarAlumno(int id){
         Alumno alumno = null;
         String sql = "SELECT dni, apellido, nombre, fechaNacimiento FROM alumno WHERE idAlumno = ? AND estado = 1";
         PreparedStatement ps = null;
@@ -68,7 +68,6 @@ public class AlumnoData {
         } catch (SQLException ex) {
           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno"+ ex.getMessage());
       }
-        return alumno;
         
     }
     public void modificarAlumno(Alumno alumno){
