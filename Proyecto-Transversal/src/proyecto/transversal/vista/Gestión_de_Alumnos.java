@@ -1,6 +1,8 @@
 package proyecto.transversal.vista;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import proyecto.transversal.accesoADatos.AlumnoData;
 import proyecto.transversal.entidades.Alumno;
@@ -248,7 +250,10 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         int dni = Integer.parseInt(jtDNI.getText());
         String apellido = jtApellido.getText();
         String nombre = jtNombre.getText();
-        LocalDate fechaNac = jtFechaNac.getLocalDate();
+        
+        java.util.Date fechaNacimientoUtil = jtFechaNac.getDate();
+        Instant instant = fechaNacimientoUtil.toInstant();
+        LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
         boolean activo = jtEstado.isSelected();
 
         AlumnoData ad = new AlumnoData();
