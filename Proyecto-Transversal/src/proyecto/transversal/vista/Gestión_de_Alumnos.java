@@ -3,7 +3,6 @@ package proyecto.transversal.vista;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Date;
 import proyecto.transversal.accesoADatos.AlumnoData;
 import proyecto.transversal.entidades.Alumno;
 
@@ -193,7 +192,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private int modificar=0;
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
         DNI.setEnabled(true);
         Nombre.setEnabled(true);
@@ -207,7 +206,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         jtFechaNac.setEnabled(true);
         jEliminar.setEnabled(true);
         jGuardar.setEnabled(true);
-
+        modificar = 1;
 
     }//GEN-LAST:event_jBuscarActionPerformed
 
@@ -224,8 +223,6 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         jtFechaNac.setEnabled(true);
         jEliminar.setEnabled(true);
         jGuardar.setEnabled(true);
-
-
     }//GEN-LAST:event_jNuevoActionPerformed
 
     private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
@@ -245,9 +242,8 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jEliminarActionPerformed
 
     private void jGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarActionPerformed
-
-        //(dni, apellido, nombre, fechaNacimiento, estado
-        int dni = Integer.parseInt(jtDNI.getText());
+        if(modificar==0){
+            int dni = Integer.parseInt(jtDNI.getText());
         String apellido = jtApellido.getText();
         String nombre = jtNombre.getText();
         
@@ -257,12 +253,36 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         boolean activo = jtEstado.isSelected();
 
         AlumnoData ad = new AlumnoData();
-
+        
         // Crear una instancia de Persona
         Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, activo);
         // Agregar la persona a la AlumnoData
         ad.agregarAlumno(alumno);
+        }else{
+            int dni = Integer.parseInt(jtDNI.getText());
+        String apellido = jtApellido.getText();
+        String nombre = jtNombre.getText();
+        
+        java.util.Date fechaNacimientoUtil = jtFechaNac.getDate();
+        Instant instant = fechaNacimientoUtil.toInstant();
+        LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+        boolean activo = jtEstado.isSelected();
 
+        AlumnoData ad = new AlumnoData();
+        
+        // Crear una instancia de Alumno
+        Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, activo);
+        // Agregar un alumno a AlumnoData
+        ad.modificarAlumno(alumno);
+        modificar=0;
+        }
+        //Borramos los valores y limpiamos la tabla 
+        jtDNI.setText("");
+        jtApellido.setText("");
+        jtNombre.setText("");
+        jtFechaNac.setText("");
+        jtEstado.setText("");
+        
         DNI.setEnabled(false);
         Nombre.setEnabled(false);
         Apellido.setEnabled(false);
