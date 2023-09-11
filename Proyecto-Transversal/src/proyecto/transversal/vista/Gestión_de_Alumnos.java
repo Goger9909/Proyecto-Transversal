@@ -1,5 +1,10 @@
 package proyecto.transversal.vista;
+
+import java.time.LocalDate;
+import java.util.Date;
 import proyecto.transversal.accesoADatos.AlumnoData;
+import proyecto.transversal.entidades.Alumno;
+
 public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
 
     public Gestión_de_Alumnos() {
@@ -136,49 +141,87 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
-        DNI.setEnabled(true);Nombre.setEnabled(true);Apellido.setEnabled(true);Estado.setEnabled(true);FechaNac.setEnabled(true);
-        jtDNI.setEnabled(true);jtApellido.setEnabled(true);jtNombre.setEnabled(true);jtEstado.setEnabled(true);jtFechaNac.setEnabled(true);
-        jEliminar.setEnabled(true);jGuardar.setEnabled(true);
-        
-        
-        
+        DNI.setEnabled(true);
+        Nombre.setEnabled(true);
+        Apellido.setEnabled(true);
+        Estado.setEnabled(true);
+        FechaNac.setEnabled(true);
+        jtDNI.setEnabled(true);
+        jtApellido.setEnabled(true);
+        jtNombre.setEnabled(true);
+        jtEstado.setEnabled(true);
+        jtFechaNac.setEnabled(true);
+        jEliminar.setEnabled(true);
+        jGuardar.setEnabled(true);
+
+
     }//GEN-LAST:event_jBuscarActionPerformed
 
     private void jNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNuevoActionPerformed
-        DNI.setEnabled(true);Nombre.setEnabled(true);Apellido.setEnabled(true);Estado.setEnabled(true);FechaNac.setEnabled(true);
-        jtDNI.setEnabled(true);jtApellido.setEnabled(true);jtNombre.setEnabled(true);jtEstado.setEnabled(true);jtFechaNac.setEnabled(true);
-        jEliminar.setEnabled(true);jGuardar.setEnabled(true);
-        
-        
-        
-        
-        
+        DNI.setEnabled(true);
+        Nombre.setEnabled(true);
+        Apellido.setEnabled(true);
+        Estado.setEnabled(true);
+        FechaNac.setEnabled(true);
+        jtDNI.setEnabled(true);
+        jtApellido.setEnabled(true);
+        jtNombre.setEnabled(true);
+        jtEstado.setEnabled(true);
+        jtFechaNac.setEnabled(true);
+        jEliminar.setEnabled(true);
+        jGuardar.setEnabled(true);
+
+
     }//GEN-LAST:event_jNuevoActionPerformed
 
     private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
-        
-        
-        
-        
-        DNI.setEnabled(false);Nombre.setEnabled(false);Apellido.setEnabled(false);Estado.setEnabled(false);FechaNac.setEnabled(false);
-        jtDNI.setEnabled(false);jtApellido.setEnabled(false);jtNombre.setEnabled(false);jtEstado.setEnabled(false);jtFechaNac.setEnabled(false);
-        jEliminar.setEnabled(false);jGuardar.setEnabled(false);
+
+        DNI.setEnabled(false);
+        Nombre.setEnabled(false);
+        Apellido.setEnabled(false);
+        Estado.setEnabled(false);
+        FechaNac.setEnabled(false);
+        jtDNI.setEnabled(false);
+        jtApellido.setEnabled(false);
+        jtNombre.setEnabled(false);
+        jtEstado.setEnabled(false);
+        jtFechaNac.setEnabled(false);
+        jEliminar.setEnabled(false);
+        jGuardar.setEnabled(false);
     }//GEN-LAST:event_jEliminarActionPerformed
 
     private void jGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarActionPerformed
-        
+
         //(dni, apellido, nombre, fechaNacimiento, estado
-        Alumno=(DNI,Apellido,Nombre,FechaNac,Estado)
-        AlumnoData AD=new AlumnoData();
-        AD.agregarAlumno(alumno);
-        
-        DNI.setEnabled(false);Nombre.setEnabled(false);Apellido.setEnabled(false);Estado.setEnabled(false);FechaNac.setEnabled(false);
-        jtDNI.setEnabled(false);jtApellido.setEnabled(false);jtNombre.setEnabled(false);jtEstado.setEnabled(false);jtFechaNac.setEnabled(false);
-        jEliminar.setEnabled(false);jGuardar.setEnabled(false);
+        int dni = Integer.parseInt(jtDNI.getText());
+        String apellido = jtApellido.getText();
+        String nombre = jtNombre.getText();
+        LocalDate fechaNac = jtFechaNac.getLocalDate();
+        boolean activo = jtEstado.isSelected();
+
+        AlumnoData ad = new AlumnoData();
+
+        // Crear una instancia de Persona
+        Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, activo);
+        // Agregar la persona a la AlumnoData
+        ad.agregarAlumno(alumno);
+
+        DNI.setEnabled(false);
+        Nombre.setEnabled(false);
+        Apellido.setEnabled(false);
+        Estado.setEnabled(false);
+        FechaNac.setEnabled(false);
+        jtDNI.setEnabled(false);
+        jtApellido.setEnabled(false);
+        jtNombre.setEnabled(false);
+        jtEstado.setEnabled(false);
+        jtFechaNac.setEnabled(false);
+        jEliminar.setEnabled(false);
+        jGuardar.setEnabled(false);
     }//GEN-LAST:event_jGuardarActionPerformed
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
-        
+
     }//GEN-LAST:event_jSalirActionPerformed
 
 
