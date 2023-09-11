@@ -2,7 +2,11 @@
 package proyecto.transversal;
 
 import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.Month;
+import proyecto.transversal.accesoADatos.AlumnoData;
 import proyecto.transversal.accesoADatos.Conexion;
+import proyecto.transversal.entidades.Alumno;
 
 
 
@@ -15,8 +19,10 @@ public class ProyectoTransversal {
         String HOLA;
         String ComoEstas;
         String Hola; 
-        Connection con = Conexion.getConexion();
-    
+//        Connection con = Conexion.getConexion();
+    Alumno al = new Alumno(44444444, "Suarez", "Fernando", LocalDate.of(1990, Month.MARCH, 25), true);
+    AlumnoData ad = new AlumnoData();
+    ad.agregarAlumno(al);
 
 ////    CARGAR MATERIA
 //    Materia biologia= new Materia("Biologia",1,true);
