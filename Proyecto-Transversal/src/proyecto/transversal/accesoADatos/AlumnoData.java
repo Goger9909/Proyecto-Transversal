@@ -70,7 +70,7 @@ public class AlumnoData {
       }
         
     }
-    public void modificarAlumno(Alumno alumno){
+    public void modificarAlumno(Alumno alumno) {
         String sql = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?, fechaNacimiento = ? WHERE idAlumno = ? AND estado = true";
         PreparedStatement ps = null;
         try {
