@@ -24,7 +24,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         FechaNac = new javax.swing.JLabel();
         jtEstado = new javax.swing.JRadioButton();
         jBuscar = new javax.swing.JButton();
-        jtFechaNac = new org.netbeans.modules.form.InvalidComponent();
+        jtFechaNac = new com.toedter.calendar.JDateChooser();
         jNuevo = new javax.swing.JButton();
         jEliminar = new javax.swing.JButton();
         jGuardar = new javax.swing.JButton();
@@ -70,6 +70,8 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                 jBuscarActionPerformed(evt);
             }
         });
+
+        jtFechaNac.setEnabled(false);
 
         jNuevo.setText("Nuevo");
         jNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -248,7 +250,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtDNI;
     private javax.swing.JRadioButton jtEstado;
-    private org.netbeans.modules.form.InvalidComponent jtFechaNac;
+    private com.toedter.calendar.JDateChooser jtFechaNac;
     private javax.swing.JTextField jtNombre;
     // End of variables declaration//GEN-END:variables
 }
