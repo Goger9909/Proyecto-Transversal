@@ -51,6 +51,7 @@ public class ProyectoTransversal {
 //    System.out.println("estado"+materia.isActivo());
 //    System.out.println("----------");
 //}
+ 
 
     }
 }
