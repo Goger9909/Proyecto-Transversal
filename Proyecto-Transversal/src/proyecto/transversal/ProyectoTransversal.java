@@ -26,7 +26,7 @@ public class ProyectoTransversal {
 //        Connection con = Conexion.getConexion();
     Alumno al = new Alumno(1,44444444, "Suarez", "Fernando", LocalDate.of(1990, Month.MARCH, 25), true);
     AlumnoData ad = new AlumnoData();
-    ad.agregarAlumno(al);
+//    ad.agregarAlumno(al);
 
 ////    CARGAR MATERIA
 //   Materia biologia= new Materia(1,"Biologia",1,true);
@@ -63,11 +63,14 @@ public class ProyectoTransversal {
     
 //CARGAR INSCRIPCION 
 //  Inscripcion ins = new Inscripcion(al , biologia, 8);
-//  InscripcionData insc = new InscripcionData();
+  InscripcionData insc = new InscripcionData();
 //  insc.GuardarAlumno(ins);
 
 
 //ACTUALIZAR NOTA 
 //   insc.ActualizarNota(1, 1, 10);
+
+//insc.ObtenerMateriasCursadas(1);
+
     }
 }
