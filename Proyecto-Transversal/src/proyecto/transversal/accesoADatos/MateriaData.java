@@ -2,6 +2,7 @@
 package proyecto.transversal.accesoADatos;
 
 
+import com.oracle.jrockit.jfr.FlightRecorder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -60,6 +61,7 @@ public class MateriaData {
             
             ps.setString(1, materia.getNombre());
             ps.setInt(2,materia.getAnioMateria());
+            ps.setInt(3,materia.getIdMateria());
             int exito = ps.executeUpdate();
             if(exito == 1){
                 
@@ -108,7 +110,8 @@ public class MateriaData {
                 materia.setIdMateria(id);
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("año"));
-                materia.setActivo(true);
+                materia.setActivo(rs.getBoolean("estado"));
+                
             } else{
             JOptionPane.showMessageDialog(null, "No existe una materia con ese ID");
             }
