@@ -6,7 +6,9 @@ import java.time.LocalDate;
 import java.time.Month;
 import proyecto.transversal.accesoADatos.AlumnoData;
 import proyecto.transversal.accesoADatos.Conexion;
+import proyecto.transversal.accesoADatos.MateriaData;
 import proyecto.transversal.entidades.Alumno;
+import proyecto.transversal.entidades.Materia;
 
 
 
@@ -20,32 +22,32 @@ public class ProyectoTransversal {
         String ComoEstas;
         String Hola; 
 //        Connection con = Conexion.getConexion();
-    Alumno al = new Alumno(44444444, "Suarez", "Fernando", LocalDate.of(1990, Month.MARCH, 25), true);
-    AlumnoData ad = new AlumnoData();
-    ad.agregarAlumno(al);
+//    Alumno al = new Alumno(44444444, "Suarez", "Fernando", LocalDate.of(1990, Month.MARCH, 25), true);
+//    AlumnoData ad = new AlumnoData();
+//    ad.agregarAlumno(al);
 
-////    CARGAR MATERIA
-//    Materia biologia= new Materia("Biologia",1,true);
+//    CARGAR MATERIA
+//    Materia materi= new Materia("",1,true);
 //    MateriaData mate=new MateriaData();
-//    mate.guardarMateria(biologia);
+//    mate.guardarMateria(materi);
 
 
-////    MODIFICAR MATERIA
-//mate.modificarMateria(biologia);
+//    MODIFICAR MATERIA
+//mate.modificarMateria(materi);
 
-////    BORRAR MATERIA
-//    mate.eliminarMateria(-Colocar ID-);
+//    BORRAR MATERIA
+//    mate.eliminarMateria(-ID-);
     
 ////  BUSCAR MATERIA
-//    Materia materiaEncontrada = mate.buscarMateria(-Colocar ID-);
-//    
+//    Materia materiaEncontrada = mate.buscarMateria(7);
+//            
 //    if(materiaEncontrada!=null){
 //        System.out.println("nombre: "+materiaEncontrada.getNombre());
 //        System.out.println("año: "+materiaEncontrada.getAnioMateria());
 //        System.out.println("estado: "+materiaEncontrada.isActivo());
 //    }
 
-// ARRAY DE ALUMNOS
+//// ARRAY DE ALUMNOS
 
 //MateriaData mate = new MateriaData();
 //for(Materia materia:mate.listarMaterias()){
@@ -53,11 +55,11 @@ public class ProyectoTransversal {
 //    System.out.println("id: "+materia.getIdMateria());
 //    System.out.println("nombre: "+materia.getNombre());
 //    System.out.println("año: "+materia.getAnioMateria());
-//    System.out.println("estado"+materia.isActivo());
+////    System.out.println("estado "+materia.isActivo());
 //    System.out.println("----------");
 //}    
-    
-    
+//    
+//    
     
     }
 }
