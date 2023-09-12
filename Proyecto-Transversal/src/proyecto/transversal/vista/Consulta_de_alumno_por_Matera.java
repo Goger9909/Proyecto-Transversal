@@ -52,6 +52,7 @@ public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(479, 354));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Listado de alumno por Materia");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 270, -1));
@@ -81,6 +82,7 @@ public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
 
         jPanel1.add(jcSelecMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 160, -1));
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel3.setText("Selecionar una materia");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 190, 20));
 
