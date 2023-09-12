@@ -194,6 +194,13 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     private int modificar=0;
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
+        
+        jtDNI.setText("");
+        jtApellido.setText("");
+        jtNombre.setText("");
+        jtFechaNac.setDate(null);
+        jtEstado.setText("");
+        
         DNI.setEnabled(true);
         Nombre.setEnabled(true);
         Apellido.setEnabled(true);
@@ -211,6 +218,15 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBuscarActionPerformed
 
     private void jNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNuevoActionPerformed
+        
+        
+        
+        jtDNI.setText("");
+        jtApellido.setText("");
+        jtNombre.setText("");
+        jtFechaNac.setDate(null);
+        jtEstado.setText("");
+        
         DNI.setEnabled(true);
         Nombre.setEnabled(true);
         Apellido.setEnabled(true);
@@ -226,7 +242,14 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jNuevoActionPerformed
 
     private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
-
+        
+        
+        jtDNI.setText("");
+        jtApellido.setText("");
+        jtNombre.setText("");
+        jtFechaNac.setDate(null);
+        jtEstado.setText("");
+        
         DNI.setEnabled(false);
         Nombre.setEnabled(false);
         Apellido.setEnabled(false);
@@ -280,7 +303,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         jtDNI.setText("");
         jtApellido.setText("");
         jtNombre.setText("");
-        jtFechaNac.setText("");
+        jtFechaNac.setDate(null);
         jtEstado.setText("");
         
         DNI.setEnabled(false);
