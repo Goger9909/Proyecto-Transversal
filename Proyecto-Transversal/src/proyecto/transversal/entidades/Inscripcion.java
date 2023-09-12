@@ -30,15 +30,15 @@ public class Inscripcion {
         this.idIncripcion = idIncripcion;
     }
 
-    public Alumno getAlumno() {
-        return alumno;
+    public int getAlumno() {
+        return alumno.getIdAlumno();
     }
     public void setAlumno(Alumno alumno) {
         this.alumno = alumno;
     }
 
-    public Materia getMateria() {
-        return materia;
+    public int getMateria() {
+        return materia.getIdMateria();
     }
     public void setMateria(Materia materia) {
         this.materia = materia;
