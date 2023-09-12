@@ -65,6 +65,9 @@ public class ProyectoTransversal {
 //  Inscripcion ins = new Inscripcion(al , biologia, 8);
 //  InscripcionData insc = new InscripcionData();
 //  insc.GuardarAlumno(ins);
-   
+
+
+//ACTUALIZAR NOTA 
+//   insc.ActualizarNota(1, 1, 10);
     }
 }
