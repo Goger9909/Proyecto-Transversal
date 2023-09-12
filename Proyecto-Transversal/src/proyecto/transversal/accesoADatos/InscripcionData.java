@@ -73,7 +73,6 @@ public class InscripcionData {
           ps.setDouble(1, nota);
           ps.setInt(2, idAlumno);
           ps.setInt(3, idMateria);
-          
           int rs = ps.executeUpdate();
           if(rs == 1){
               JOptionPane.showMessageDialog(null, "Se actualizo la nota correctamente");
@@ -106,7 +105,7 @@ public class InscripcionData {
 
  }
  
-    
+   
     
     
     
