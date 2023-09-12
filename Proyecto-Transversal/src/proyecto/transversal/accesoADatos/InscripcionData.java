@@ -87,4 +87,45 @@ public class InscripcionData {
     
  }
  
+     public void BorrarinscripcionMateriaAlumno(int idAlumno , int idMateria){
+     String sql = "DELETE FROM `inscripcion` WHERE idAlumno = ? AND idMataria = ?";
+     try {
+         PreparedStatement ps = con.prepareStatement(sql); 
+         ps.setInt(1, idAlumno);
+         ps.setInt(2, idMateria);
+         int rs = ps.executeUpdate();
+          if(rs == 1){
+              JOptionPane.showMessageDialog(null, "Se elimino el alumno de la Materia");
+          } else {
+              JOptionPane.showMessageDialog(null, "No se encontro registros");
+          }
+          ps.close();
+     }  catch (SQLException ex) {
+          JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex.getMessage());
+        }
+
+ }
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
