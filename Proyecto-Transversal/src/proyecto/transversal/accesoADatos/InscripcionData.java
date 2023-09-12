@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import proyecto.transversal.entidades.Inscripcion;
 
@@ -39,5 +41,29 @@ public class InscripcionData {
             JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex.getMessage());
         }
     }
+   
+     public List<Inscripcion> ObtenerInscripcionesPorAlumno(int id){
+        String sql = "SELECT * FROM inscripcion WHERE idAlumno = ? ";
+        List<Inscripcion> inscriptos = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Inscripcion ins = new Inscripcion();
+                ins.setIdIncripcion(rs.getInt("idInscripto"));
+                ins.setNota(rs.getInt("nota"));
+                inscriptos.add(ins);
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe el alumno");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error" + ex.getMessage());
+        }
+        
+        return inscriptos;
+ }
+ 
    
 }
