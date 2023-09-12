@@ -68,6 +68,11 @@ public class Main extends javax.swing.JFrame {
         jMenu4.setText("Consultas");
 
         jMenuItem5.setText("Alumnos por Materia");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem5);
 
         jMenuBar1.add(jMenu4);
@@ -99,6 +104,16 @@ public class Main extends javax.swing.JFrame {
         jEscritorio.add(GA);
         jEscritorio.moveToFront(GA);
     }//GEN-LAST:event_jFormularioAlumnoActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+         jEscritorio.removeAll();
+        jEscritorio.repaint();
+        Consulta_de_alumno_por_Matera GA = new Consulta_de_alumno_por_Matera();
+        GA.setVisible(true);
+        jEscritorio.add(GA);
+        jEscritorio.moveToFront(GA);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
