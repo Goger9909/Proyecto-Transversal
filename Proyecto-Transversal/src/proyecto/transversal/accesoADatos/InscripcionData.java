@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import proyecto.transversal.entidades.Inscripcion;
+import proyecto.transversal.entidades.Materia;
 
 public class InscripcionData {
     
@@ -105,7 +106,28 @@ public class InscripcionData {
 
  }
  
-   
+   public List<Materia> ObtenerMateriasCursadas(int id){
+         List<Materia> materias = new ArrayList<Materia>();
+         try {
+             String sql = "SELECT inscripcion.idMataria , nombre , año FROM inscripcion , "
+           + "materia WHERE inscripcion.idMataria = materia.idMateria AND inscripcion.idAlumno = ?";
+           PreparedStatement ps = con.prepareStatement(sql);    
+           ps.setInt(1, id);
+           ResultSet rs = ps.executeQuery();
+           Materia materia;
+           while(rs.next()){
+             materia = new Materia();
+             materia.setIdMateria(rs.getInt("idMateria"));
+             materia.setNombre(rs.getString("nombre"));
+             materia.setAnioMateria(rs.getInt("año"));
+             materias.add(materia);
+           }
+           ps.close();
+         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex.getMessage());
+        }
+     return materias;
+     }  
     
     
     
