@@ -65,5 +65,26 @@ public class InscripcionData {
         return inscriptos;
  }
  
-   
+    public void ActualizarNota(int idAlumno,int idMateria, double nota){
+     
+     String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? AND idMataria = ?";
+      try {
+          PreparedStatement ps = con.prepareStatement(sql);
+          ps.setDouble(1, nota);
+          ps.setInt(2, idAlumno);
+          ps.setInt(3, idMateria);
+          
+          int rs = ps.executeUpdate();
+          if(rs == 1){
+              JOptionPane.showMessageDialog(null, "Se actualizo la nota correctamente");
+          } else {
+              JOptionPane.showMessageDialog(null, "No se actualizo la nota");
+          }
+          ps.close();
+      } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex.getMessage());
+        }
+    
+ }
+ 
 }
