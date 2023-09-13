@@ -95,7 +95,7 @@ public class AlumnoData {
     }
     //<<<<<<<<<<<<<<< Elimina Alumno >>>>>>>>>>>>>>>
     public void eliminarAlumno(int id){
-        String sql = "UPDATE alumno SET estado = false";
+        String sql = "UPDATE alumno SET estado = false WHERE idAlumno = ?";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
@@ -103,7 +103,7 @@ public class AlumnoData {
             int eliminar = ps.executeUpdate();
             if(eliminar == 1){
                 JOptionPane.showMessageDialog(null,"El alumno fue eliminado");
-        }else{
+            }else{
                 JOptionPane.showMessageDialog(null,"El alumno no existe");
             }
         } catch (SQLException ex) {

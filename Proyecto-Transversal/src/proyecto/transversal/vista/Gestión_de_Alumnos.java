@@ -176,16 +176,22 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+    //Instanciamos la clase AlumnoData como ad
     AlumnoData ad = new AlumnoData();
     
     private boolean modificar=false;
+    int id;
     
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
+        //
         int dni = Integer.parseInt(jtDNI.getText());
+<<<<<<< HEAD
         //ad.buscarAlumnoPorDni(dni);
+=======
+>>>>>>> e3ca62dc8e8f763933b030a8643fb45e1f8bc53b
         
         Alumno alumno=ad.buscarAlumnoPorDni(dni);
+        id=alumno.getIdAlumno();
         String apellido=alumno.getApellido();
         String nombre=alumno.getNombre();
         LocalDate fechaNac=alumno.getFechaNac();
@@ -194,19 +200,17 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
             fechaNacimiento = Date.from(fechaNac.atStartOfDay(ZoneId.systemDefault()).toInstant());
             // Continuar con el código
         } else {fechaNacimiento=(null);}
-        
+        //Rellenamos tabla, con los valores de la base de datos 
         jtApellido.setText(apellido);
         jtNombre.setText(nombre);
         jtFechaNac.setDate(fechaNacimiento);
         jtEstado.setSelected(true);
-        
+        //Ponemos en true 'modificar', para especificar en el boton 'eliminar' y en 'guardar' para poder modificar los valores existentes
         modificar = true;
     }//GEN-LAST:event_jBuscarActionPerformed
 
     private void jNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNuevoActionPerformed
-        
-        
-        
+        //Borramos los valores y limpiamos la tabla 
         jtDNI.setText("");
         jtApellido.setText("");
         jtNombre.setText("");
@@ -215,8 +219,9 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jNuevoActionPerformed
 
     private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
+        ad.eliminarAlumno(id);
         
-        
+        //Borramos los valores y limpiamos la tabla 
         jtDNI.setText("");
         jtApellido.setText("");
         jtNombre.setText("");
@@ -229,14 +234,11 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
             int dni = Integer.parseInt(jtDNI.getText());
             String apellido = jtApellido.getText();
             String nombre = jtNombre.getText();
-
             java.util.Date fechaNacimientoUtil = jtFechaNac.getDate();
             Instant instant = fechaNacimientoUtil.toInstant();
             LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
             boolean activo = jtEstado.isSelected();
-
-        
-        
+            
             // Crear una instancia de Persona
             Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, activo);
             // Agregar la persona a la AlumnoData
@@ -251,10 +253,8 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
             LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
             boolean activo = jtEstado.isSelected();
 
-            AlumnoData ad = new AlumnoData();
-
             // Crear una instancia de Alumno
-            Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, activo);
+            Alumno alumno = new Alumno(id,dni, apellido, nombre, fechaNac, activo);
             // Agregar un alumno a AlumnoData
             ad.modificarAlumno(alumno);
             modificar=false;
@@ -268,7 +268,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jGuardarActionPerformed
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
-
+        
     }//GEN-LAST:event_jSalirActionPerformed
 
 
