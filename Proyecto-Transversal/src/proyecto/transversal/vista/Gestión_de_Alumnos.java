@@ -183,7 +183,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
     
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
         int dni = Integer.parseInt(jtDNI.getText());
-        ad.buscarAlumnoPorDni(dni);
+        //ad.buscarAlumnoPorDni(dni);
         
         Alumno alumno=ad.buscarAlumnoPorDni(dni);
         String apellido=alumno.getApellido();
