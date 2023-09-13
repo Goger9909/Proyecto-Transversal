@@ -105,13 +105,11 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                     .addComponent(Apellido)
                     .addComponent(FechaNac)
                     .addComponent(Estado)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jNuevo)
-                        .addGap(18, 18, 18)
-                        .addComponent(jEliminar)))
+                    .addComponent(jNuevo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jtDNI)
                             .addComponent(jtApellido, javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,14 +117,21 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                             .addComponent(jtEstado, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtFechaNac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(jBuscar))
+                        .addComponent(jBuscar)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jGuardar)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jEliminar)
+                                .addGap(64, 64, 64)
+                                .addComponent(jGuardar)
+                                .addGap(52, 52, 52)))
                         .addComponent(jSalir)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,7 +159,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(FechaNac)
                     .addComponent(jtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNuevo)
                     .addComponent(jEliminar)
@@ -183,50 +188,43 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
     int id;
     
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
-        //
         int dni = Integer.parseInt(jtDNI.getText());
-<<<<<<< HEAD
-        //ad.buscarAlumnoPorDni(dni);
-=======
->>>>>>> e3ca62dc8e8f763933b030a8643fb45e1f8bc53b
-        
         Alumno alumno=ad.buscarAlumnoPorDni(dni);
-        id=alumno.getIdAlumno();
-        String apellido=alumno.getApellido();
-        String nombre=alumno.getNombre();
-        LocalDate fechaNac=alumno.getFechaNac();
-        Date fechaNacimiento;
+            id=alumno.getIdAlumno();
+            String apellido=alumno.getApellido();
+            String nombre=alumno.getNombre();
+            LocalDate fechaNac=alumno.getFechaNac();
+            Date fechaNacimiento;
         if (fechaNac != null) {
             fechaNacimiento = Date.from(fechaNac.atStartOfDay(ZoneId.systemDefault()).toInstant());
             // Continuar con el código
         } else {fechaNacimiento=(null);}
         //Rellenamos tabla, con los valores de la base de datos 
-        jtApellido.setText(apellido);
-        jtNombre.setText(nombre);
-        jtFechaNac.setDate(fechaNacimiento);
-        jtEstado.setSelected(true);
+            jtApellido.setText(apellido);
+            jtNombre.setText(nombre);
+            jtFechaNac.setDate(fechaNacimiento);
+            jtEstado.setSelected(true);
         //Ponemos en true 'modificar', para especificar en el boton 'eliminar' y en 'guardar' para poder modificar los valores existentes
-        modificar = true;
+            modificar = true;
     }//GEN-LAST:event_jBuscarActionPerformed
 
     private void jNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNuevoActionPerformed
         //Borramos los valores y limpiamos la tabla 
-        jtDNI.setText("");
-        jtApellido.setText("");
-        jtNombre.setText("");
-        jtFechaNac.setDate(null);
-        jtEstado.setSelected(false);
+            jtDNI.setText("");
+            jtApellido.setText("");
+            jtNombre.setText("");
+            jtFechaNac.setDate(null);
+            jtEstado.setSelected(false);
     }//GEN-LAST:event_jNuevoActionPerformed
 
     private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
         ad.eliminarAlumno(id);
-        
         //Borramos los valores y limpiamos la tabla 
-        jtDNI.setText("");
-        jtApellido.setText("");
-        jtNombre.setText("");
-        jtFechaNac.setDate(null);
-        jtEstado.setSelected(false);
+            jtDNI.setText("");
+            jtApellido.setText("");
+            jtNombre.setText("");
+            jtFechaNac.setDate(null);
+            jtEstado.setSelected(false);
     }//GEN-LAST:event_jEliminarActionPerformed
 
     private void jGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarActionPerformed
@@ -260,11 +258,11 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
             modificar=false;
         }
         //Borramos los valores y limpiamos la tabla 
-        jtDNI.setText("");
-        jtApellido.setText("");
-        jtNombre.setText("");
-        jtFechaNac.setDate(null);
-        jtEstado.setSelected(false);
+            jtDNI.setText("");
+            jtApellido.setText("");
+            jtNombre.setText("");
+            jtFechaNac.setDate(null);
+            jtEstado.setSelected(false);
     }//GEN-LAST:event_jGuardarActionPerformed
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
