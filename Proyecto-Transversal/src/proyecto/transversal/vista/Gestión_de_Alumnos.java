@@ -3,6 +3,7 @@ package proyecto.transversal.vista;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Date;
 import proyecto.transversal.accesoADatos.AlumnoData;
 import proyecto.transversal.entidades.Alumno;
 
@@ -48,27 +49,14 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         jLabel2.setText("Gestión de Alumnos");
 
         DNI.setText("DNI: ");
-        DNI.setEnabled(false);
-
-        jtDNI.setEnabled(false);
 
         Nombre.setText("Nombre: ");
-        Nombre.setEnabled(false);
 
         Apellido.setText("Apellido: ");
-        Apellido.setEnabled(false);
-
-        jtApellido.setEnabled(false);
-
-        jtNombre.setEnabled(false);
 
         Estado.setText("Estado: ");
-        Estado.setEnabled(false);
 
         FechaNac.setText("Fecha de Nacimiento: ");
-        FechaNac.setEnabled(false);
-
-        jtEstado.setEnabled(false);
 
         jBuscar.setText("Buscar");
         jBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -76,8 +64,6 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                 jBuscarActionPerformed(evt);
             }
         });
-
-        jtFechaNac.setEnabled(false);
 
         jNuevo.setText("Nuevo");
         jNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +73,6 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         });
 
         jEliminar.setText("Eliminar");
-        jEliminar.setEnabled(false);
         jEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jEliminarActionPerformed(evt);
@@ -95,7 +80,6 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         });
 
         jGuardar.setText("Guardar");
-        jGuardar.setEnabled(false);
         jGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jGuardarActionPerformed(evt);
@@ -192,29 +176,31 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private int modificar=0;
+    
+    AlumnoData ad = new AlumnoData();
+    
+    private boolean modificar=false;
+    
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
+        int dni = Integer.parseInt(jtDNI.getText());
+        ad.buscarAlumnoPorDni(dni);
         
-        jtDNI.setText("");
-        jtApellido.setText("");
-        jtNombre.setText("");
-        jtFechaNac.setDate(null);
-        jtEstado.setText("");
+        Alumno alumno=ad.buscarAlumnoPorDni(dni);
+        String apellido=alumno.getApellido();
+        String nombre=alumno.getNombre();
+        LocalDate fechaNac=alumno.getFechaNac();
+        Date fechaNacimiento;
+        if (fechaNac != null) {
+            fechaNacimiento = Date.from(fechaNac.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            // Continuar con el código
+        } else {fechaNacimiento=(null);}
         
-        DNI.setEnabled(true);
-        Nombre.setEnabled(true);
-        Apellido.setEnabled(true);
-        Estado.setEnabled(true);
-        FechaNac.setEnabled(true);
-        jtDNI.setEnabled(true);
-        jtApellido.setEnabled(true);
-        jtNombre.setEnabled(true);
-        jtEstado.setEnabled(true);
-        jtFechaNac.setEnabled(true);
-        jEliminar.setEnabled(true);
-        jGuardar.setEnabled(true);
-        modificar = 1;
-
+        jtApellido.setText(apellido);
+        jtNombre.setText(nombre);
+        jtFechaNac.setDate(fechaNacimiento);
+        jtEstado.setSelected(true);
+        
+        modificar = true;
     }//GEN-LAST:event_jBuscarActionPerformed
 
     private void jNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNuevoActionPerformed
@@ -225,20 +211,7 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         jtApellido.setText("");
         jtNombre.setText("");
         jtFechaNac.setDate(null);
-        jtEstado.setText("");
-        
-        DNI.setEnabled(true);
-        Nombre.setEnabled(true);
-        Apellido.setEnabled(true);
-        Estado.setEnabled(true);
-        FechaNac.setEnabled(true);
-        jtDNI.setEnabled(true);
-        jtApellido.setEnabled(true);
-        jtNombre.setEnabled(true);
-        jtEstado.setEnabled(true);
-        jtFechaNac.setEnabled(true);
-        jEliminar.setEnabled(true);
-        jGuardar.setEnabled(true);
+        jtEstado.setSelected(false);
     }//GEN-LAST:event_jNuevoActionPerformed
 
     private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
@@ -248,76 +221,50 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         jtApellido.setText("");
         jtNombre.setText("");
         jtFechaNac.setDate(null);
-        jtEstado.setText("");
-        
-        DNI.setEnabled(false);
-        Nombre.setEnabled(false);
-        Apellido.setEnabled(false);
-        Estado.setEnabled(false);
-        FechaNac.setEnabled(false);
-        jtDNI.setEnabled(false);
-        jtApellido.setEnabled(false);
-        jtNombre.setEnabled(false);
-        jtEstado.setEnabled(false);
-        jtFechaNac.setEnabled(false);
-        jEliminar.setEnabled(false);
-        jGuardar.setEnabled(false);
+        jtEstado.setSelected(false);
     }//GEN-LAST:event_jEliminarActionPerformed
 
     private void jGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarActionPerformed
-        if(modificar==0){
+        if(modificar==false){
             int dni = Integer.parseInt(jtDNI.getText());
-        String apellido = jtApellido.getText();
-        String nombre = jtNombre.getText();
-        
-        java.util.Date fechaNacimientoUtil = jtFechaNac.getDate();
-        Instant instant = fechaNacimientoUtil.toInstant();
-        LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
-        boolean activo = jtEstado.isSelected();
+            String apellido = jtApellido.getText();
+            String nombre = jtNombre.getText();
 
-        AlumnoData ad = new AlumnoData();
+            java.util.Date fechaNacimientoUtil = jtFechaNac.getDate();
+            Instant instant = fechaNacimientoUtil.toInstant();
+            LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+            boolean activo = jtEstado.isSelected();
+
         
-        // Crear una instancia de Persona
-        Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, activo);
-        // Agregar la persona a la AlumnoData
-        ad.agregarAlumno(alumno);
+        
+            // Crear una instancia de Persona
+            Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, activo);
+            // Agregar la persona a la AlumnoData
+            ad.agregarAlumno(alumno);
         }else{
             int dni = Integer.parseInt(jtDNI.getText());
-        String apellido = jtApellido.getText();
-        String nombre = jtNombre.getText();
-        
-        java.util.Date fechaNacimientoUtil = jtFechaNac.getDate();
-        Instant instant = fechaNacimientoUtil.toInstant();
-        LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
-        boolean activo = jtEstado.isSelected();
+            String apellido = jtApellido.getText();
+            String nombre = jtNombre.getText();
 
-        AlumnoData ad = new AlumnoData();
-        
-        // Crear una instancia de Alumno
-        Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, activo);
-        // Agregar un alumno a AlumnoData
-        ad.modificarAlumno(alumno);
-        modificar=0;
+            java.util.Date fechaNacimientoUtil = jtFechaNac.getDate();
+            Instant instant = fechaNacimientoUtil.toInstant();
+            LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+            boolean activo = jtEstado.isSelected();
+
+            AlumnoData ad = new AlumnoData();
+
+            // Crear una instancia de Alumno
+            Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, activo);
+            // Agregar un alumno a AlumnoData
+            ad.modificarAlumno(alumno);
+            modificar=false;
         }
         //Borramos los valores y limpiamos la tabla 
         jtDNI.setText("");
         jtApellido.setText("");
         jtNombre.setText("");
         jtFechaNac.setDate(null);
-        jtEstado.setText("");
-        
-        DNI.setEnabled(false);
-        Nombre.setEnabled(false);
-        Apellido.setEnabled(false);
-        Estado.setEnabled(false);
-        FechaNac.setEnabled(false);
-        jtDNI.setEnabled(false);
-        jtApellido.setEnabled(false);
-        jtNombre.setEnabled(false);
-        jtEstado.setEnabled(false);
-        jtFechaNac.setEnabled(false);
-        jEliminar.setEnabled(false);
-        jGuardar.setEnabled(false);
+        jtEstado.setSelected(false);
     }//GEN-LAST:event_jGuardarActionPerformed
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
