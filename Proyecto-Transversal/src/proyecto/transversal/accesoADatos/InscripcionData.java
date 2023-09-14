@@ -16,8 +16,8 @@ import proyecto.transversal.entidades.Materia;
 public class InscripcionData {
     
     private Connection con = null;
-    private final MateriaData md = new MateriaData(); 
-    private final AlumnoData ad = new AlumnoData(); 
+    private  MateriaData md = new MateriaData(); 
+    private  AlumnoData ad = new AlumnoData(); 
 
     public InscripcionData() {
         con = Conexion.getConexion();
@@ -44,18 +44,18 @@ public class InscripcionData {
     
     public List<Inscripcion> ObtenerInscripciones(){
     ArrayList<Inscripcion> cursada = new ArrayList<>();
-    String sql = "SELECT * FROM inscripcion";
+    String sql = "SELECT * FROM inscripcion;";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet resultado = ps.executeQuery();
                  while(resultado.next()){
                       Inscripcion insc = new  Inscripcion();
                       insc.setIdIncripcion(resultado.getInt("idInscripto"));
-                      Alumno alu = ad.buscarAlumnoPorID(resultado.getInt("idAlumno"));
-                      Materia mat = md.buscarMateria(resultado.getInt("idMateria"));
+                      insc.setNota(resultado.getDouble("nota"));
+                      Alumno alu= ad.buscarAlumnoPorID(resultado.getInt("idAlumno"));
                       insc.setAlumno(alu);
+                      Materia mat= md.buscarMateria(resultado.getInt("idMateria"));
                       insc.setMateria(mat);
-                      insc.setNota(resultado.getInt("nota"));
                       cursada.add(insc);
                  }
                  ps.close();
