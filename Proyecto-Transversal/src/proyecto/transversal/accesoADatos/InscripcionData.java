@@ -41,6 +41,29 @@ public class InscripcionData {
             JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex.getMessage());
         }
     }
+    
+    public List<Inscripcion> ObtenerInscripciones(){
+    ArrayList<Inscripcion> cursada = new ArrayList<>();
+    String sql = "SELECT * FROM inscripcion";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet resultado = ps.executeQuery();
+                 while(resultado.next()){
+                      Inscripcion insc = new  Inscripcion();
+                      insc.setIdIncripcion(resultado.getInt("idInscripto"));
+                      Alumno alu = ad.buscarAlumnoPorID(resultado.getInt("idAlumno"));
+                      Materia mat = md.buscarMateria(resultado.getInt("idMateria"));
+                      insc.setAlumno(alu);
+                      insc.setMateria(mat);
+                      insc.setNota(resultado.getInt("nota"));
+                      cursada.add(insc);
+                 }
+                 ps.close();
+            } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex.getMessage());
+        }
+        return cursada;
+ }      
    
      public List<Inscripcion> ObtenerInscripcionesPorAlumno(int idAlumno){
         List<Inscripcion> cursada = new ArrayList<>();
@@ -171,5 +194,5 @@ public class InscripcionData {
             JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex.getMessage());
         }
    return alumnosMateria;  
-        }
+        } 
 }
