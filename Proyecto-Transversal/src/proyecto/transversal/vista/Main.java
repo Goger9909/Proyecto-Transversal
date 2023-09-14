@@ -102,8 +102,6 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFormularioAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormularioAlumnoActionPerformed
-        jEscritorio.removeAll();
-        jEscritorio.repaint();
         Gestión_de_Alumnos GA = new Gestión_de_Alumnos();
         GA.setVisible(true);
         jEscritorio.add(GA);
@@ -111,9 +109,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jFormularioAlumnoActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-//        jEscritorio.removeAll();
-//        jEscritorio.repaint();
         Consulta_de_alumno_por_Matera GA = new Consulta_de_alumno_por_Matera();
         GA.setVisible(true);
         jEscritorio.add(GA);
@@ -121,18 +116,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-//        jEscritorio.removeAll();
-//        jEscritorio.repaint();
         Consulta_de_alumno_por_Matera GA = new Consulta_de_alumno_por_Matera();
         GA.setVisible(true);
         jEscritorio.add(GA);
         jEscritorio.moveToFront(GA);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
