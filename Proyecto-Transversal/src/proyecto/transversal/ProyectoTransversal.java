@@ -68,25 +68,26 @@ public class ProyectoTransversal {
   MateriaData md = new MateriaData();
 
   //BUSCAMOS ALUMNO Y MATERIA POR ID 
-//   Alumno a =  da.buscarAlumnoPorID(9);
-//   Materia e =  md.buscarMateria(6);
+//  Alumno a =  da.buscarAlumnoPorID(9);
+//  Materia e =  md.buscarMateria(6);
    
    //CREAMOS UNA INSCRIPCION 
-//   Inscripcion ins = new Inscripcion(a, e, 8);
+//  Inscripcion ins = new Inscripcion(a, e, 8);
    
  //CARGAR INSCRIPCION.
-  // insc.GuardarInscripcion(ins);
+  //insc.GuardarInscripcion(ins);
 
 
 //ACTUALIZAR NOTA POR IDALUMNO , IDMATERIA , NOTA. 
-//insc.ActualizarNota(7, 6, 10);
+// insc.ActualizarNota(7, 6, 10);
 
 //OBTENER MATERIAS CURSADAS POR ALUMNO 
 // insc.ObtenerMateriasCursadas(1);
 
 //BORRAR INSCRIPCION POR IDALUMNO Y IDMATERIA.
 //insc.BorrarInscripcionMateriaAlumno(1, 4);
-//
+
+//OBTENER INSCRIPCIONES DE TODOS LOS ALUMNOS POR MATERIA.
 //for (Inscripcion inscrip : insc.ObtenerInscripciones()){
 //     System.out.println("-------------------------------------");
 //     System.out.println("IdInscripcion: "+inscrip.getIdIncripcion());
@@ -95,7 +96,13 @@ public class ProyectoTransversal {
 //}
 
 //OBTENER MATERIAS CURSADAS 
- insc.ObtenerInscripcionesPorAlumno(1); 
+// insc.ObtenerInscripcionesPorAlumno(7); 
+
+//OBTENER ALUMNO POR MATERIA 
+//insc.ObtenerAlumnoXMateria(6);
+    
+//OBTENER MATERIAS NO CURSADAS 
+//insc.ObtenerMateriasNoCursadas(1);
 
     }
 }
