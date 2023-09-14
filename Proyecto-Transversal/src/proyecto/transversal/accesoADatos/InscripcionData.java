@@ -16,8 +16,8 @@ import proyecto.transversal.entidades.Materia;
 public class InscripcionData {
     
     private Connection con = null;
-    private MateriaData md = new MateriaData(); 
-    private AlumnoData ad = new AlumnoData(); 
+    private final MateriaData md = new MateriaData(); 
+    private final AlumnoData ad = new AlumnoData(); 
 
     public InscripcionData() {
         con = Conexion.getConexion();
@@ -106,7 +106,7 @@ public class InscripcionData {
  }
  
    public List<Materia> ObtenerMateriasCursadas(int idAlumno){
-         List<Materia> materias = new ArrayList<Materia>();
+         ArrayList<Materia> materias = new ArrayList<>();
          String sql = "SELECT inscripcion.idMataria , nombre , año FROM inscripcion , "
            + "materia WHERE inscripcion.idMataria = materia.idMateria AND inscripcion.idAlumno = ?";
          try {
