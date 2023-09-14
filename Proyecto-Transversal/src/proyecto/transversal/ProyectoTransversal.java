@@ -63,9 +63,9 @@ public class ProyectoTransversal {
 //------------------------------------------------------
 
   InscripcionData insc = new InscripcionData();
-  
-  AlumnoData da = new AlumnoData(); 
-  MateriaData md = new MateriaData();
+//  
+//  AlumnoData da = new AlumnoData(); 
+//  MateriaData md = new MateriaData();
 
   //BUSCAMOS ALUMNO Y MATERIA POR ID 
 //  Alumno a =  da.buscarAlumnoPorID(9);
@@ -99,7 +99,7 @@ public class ProyectoTransversal {
 // insc.ObtenerInscripcionesPorAlumno(7); 
 
 //OBTENER ALUMNO POR MATERIA 
-//insc.ObtenerAlumnoXMateria(6);
+insc.ObtenerAlumnoXMateria(6);
     
 //OBTENER MATERIAS NO CURSADAS 
 //insc.ObtenerMateriasNoCursadas(1);
