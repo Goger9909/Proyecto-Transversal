@@ -7,7 +7,9 @@ package proyecto.transversal.vista;
 
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
+import proyecto.transversal.accesoADatos.InscripcionData;
 import proyecto.transversal.accesoADatos.MateriaData;
+import proyecto.transversal.entidades.Alumno;
 import proyecto.transversal.entidades.Materia;
 
 /**
@@ -16,11 +18,12 @@ import proyecto.transversal.entidades.Materia;
  */
 public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel(){
-             public boolean isCellEditable(int filas, int columnas) {
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int filas, int columnas) {
             return false;
         }
     };
+
     public Consulta_de_alumno_por_Matera() {
         initComponents();
         cargarCombo();
@@ -74,6 +77,12 @@ public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
             }
         ));
         jScrollPane1.setViewportView(Tabla);
+
+        jcSelecMateria.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcSelecMateriaItemStateChanged(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel3.setText("Selecionar una materia");
@@ -130,6 +139,28 @@ public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
+//muestra los alumnos por materia inscriptos
+    private void jcSelecMateriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcSelecMateriaItemStateChanged
+        String nom = String.valueOf(jcSelecMateria.getSelectedItem());
+
+        InscripcionData inscripcionData = new InscripcionData();
+        MateriaData md = new MateriaData();
+        int sele = 0;
+        for (Materia idMateria : md.listarMaterias()) {
+            if (idMateria.getNombre().equalsIgnoreCase(nom)) {
+                sele = idMateria.getIdMateria();
+            }
+        }
+        if (evt.getStateChange() == java.awt.event.ItemEvent.DESELECTED) {
+
+            borraFila();
+            // Agrega cada alumno al modelo de la tabla
+            for (Alumno al : inscripcionData.ObtenerAlumnoXMateria(sele)) {
+                modelo.addRow(new Object[]{al.getIdAlumno(), al.getDni(), al.getApellido(), al.getNombre()});
+            }
+
+        }
+    }//GEN-LAST:event_jcSelecMateriaItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -142,18 +173,26 @@ public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<String> jcSelecMateria;
     // End of variables declaration//GEN-END:variables
-public void cargarCombo(){
-    MateriaData mate = new MateriaData();
-    for (Materia carga : mate.listarMaterias()) {
-        jcSelecMateria.addItem(carga.getNombre()+", "+carga.getAnioMateria());
+public void cargarCombo() {
+        MateriaData mate = new MateriaData();
+        for (Materia carga : mate.listarMaterias()) {
+            jcSelecMateria.addItem(carga.getNombre());
+        }
+
     }
 
-}
-public void armarTabla(){
-    modelo.addColumn("ID");
-    modelo.addColumn("DNI");
-    modelo.addColumn("Apellido");
-    modelo.addColumn("Nombre");
-    Tabla.setModel(modelo);
-}
+    public void armarTabla() {
+        modelo.addColumn("ID");
+        modelo.addColumn("DNI");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Nombre");
+        Tabla.setModel(modelo);
+    }
+
+    private void borraFila() {
+        int fila = Tabla.getRowCount() - 1;
+        for (int f = fila; f >= 0; f--) {
+            modelo.removeRow(f);
+        }
+    }
 }
