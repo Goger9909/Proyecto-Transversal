@@ -19,17 +19,15 @@ public class ProyectoTransversal {
   
     
     public static void main(String[] args) {
-        String holass;
-        String HOLA;
-        String ComoEstas;
-        String Hola; 
-//        Connection con = Conexion.getConexion();
-    Alumno al = new Alumno(1,44444444, "Suarez", "Fernando", LocalDate.of(1990, Month.MARCH, 25), true);
+     
+     Connection con = Conexion.getConexion();
+     
+    Alumno al = new Alumno(38495098, "Perez", "Paola", LocalDate.of(1990, Month.MARCH, 25), true);
     AlumnoData ad = new AlumnoData();
-//    ad.agregarAlumno(al);
+ //   ad.agregarAlumno(al);
 
 ////    CARGAR MATERIA
-//   Materia biologia= new Materia(1,"Biologia",1,true);
+//    Materia biologia= new Materia("Estadistica",1,true);
 //    MateriaData mate=new MateriaData();
 //    mate.guardarMateria(biologia);
 
@@ -60,17 +58,32 @@ public class ProyectoTransversal {
 //    System.out.println("estado"+materia.isActivo());
 //    System.out.println("----------");
 //}    
-    
-//CARGAR INSCRIPCION 
-//  Inscripcion ins = new Inscripcion(al , biologia, 8);
+ 
+
+//------------------------------------------------------
+
   InscripcionData insc = new InscripcionData();
-//  insc.GuardarAlumno(ins);
+  
+  AlumnoData da = new AlumnoData(); 
+  MateriaData md = new MateriaData();
+
+  //BUSCAMOS ALUMNO Y MATERIA POR ID 
+   Alumno a =  da.buscarAlumnoPorID(9);
+   Materia e =  md.buscarMateria(6);
+   
+   //CREAMOS UNA INSCRIPCION 
+   Inscripcion ins = new Inscripcion(a, e, 8);
+   
+ //CARGAR INSCRIPCION 
+  // insc.GuardarInscripcion(ins);
 
 
-//ACTUALIZAR NOTA 
-//   insc.ActualizarNota(1, 1, 10);
+//ACTUALIZAR NOTA POR IDALUMNO , IDMATERIA , NOTA. 
+//insc.ActualizarNota(7, 6, 10);
 
-//insc.ObtenerMateriasCursadas(1);
+//OBTENER MATERIAS CURSADAS POR ALUMNO 
+//   insc.ObtenerMateriasCursadas(1);
 
+//
     }
 }
