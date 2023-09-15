@@ -32,7 +32,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         MateriasNoInscriptas = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        MateriasInscriptas = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -48,6 +48,11 @@ private DefaultTableModel modelo = new DefaultTableModel();
 
         jLabel1.setText("Formulario de Inscripcion");
 
+        jCBAlumno.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBAlumnoItemStateChanged(evt);
+            }
+        });
         jCBAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBAlumnoActionPerformed(evt);
@@ -70,10 +75,10 @@ private DefaultTableModel modelo = new DefaultTableModel();
             }
         });
 
-        jRadioButton2.setText("Materias Inscriptas");
-        jRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        MateriasInscriptas.setText("Materias Inscriptas");
+        MateriasInscriptas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButton2MouseClicked(evt);
+                MateriasInscriptasMouseClicked(evt);
             }
         });
 
@@ -95,6 +100,11 @@ private DefaultTableModel modelo = new DefaultTableModel();
         jButton2.setText("Anular Inscripcion");
 
         jButton3.setText("Salir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,7 +122,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
                 .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MateriasInscriptas, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(MateriasNoInscriptas)
                 .addContainerGap())
@@ -147,7 +157,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MateriasNoInscriptas)
-                    .addComponent(jRadioButton2))
+                    .addComponent(MateriasInscriptas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -172,37 +182,61 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_MateriasNoInscriptasActionPerformed
 
     private void MateriasNoInscriptasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MateriasNoInscriptasMouseClicked
-        // TODO add your handling code here:
-        int alu = jCBAlumno.getSelectedIndex();
-        InscripcionData insc= new InscripcionData();
-        for (Materia ins : insc.ObtenerMateriasNoCursadas(alu)){
-           modelo.addRow(new Object[]{ins.getIdMateria(),ins.getNombre(),ins.getAnioMateria()});
-        }
-      
+//        // TODO add your handling code here:
+//        int alu = jCBAlumno.getSelectedIndex();
+//        InscripcionData insc= new InscripcionData();
+//        for (Materia ins : insc.ObtenerMateriasNoCursadas(alu)){
+//           modelo.addRow(new Object[]{ins.getIdMateria(),ins.getNombre(),ins.getAnioMateria()});
+//        }
+//      
     }//GEN-LAST:event_MateriasNoInscriptasMouseClicked
 
-    private void jRadioButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MouseClicked
-        // TODO add your handling code here:
-        int alu = jCBAlumno.getSelectedIndex();
-        InscripcionData insc = new InscripcionData();
-        for (Materia ins : insc.ObtenerMateriasCursadas(alu)){
-           modelo.addRow(new Object[]{ins.getIdMateria(),ins.getNombre(),ins.getAnioMateria()});
-        }
+    private void MateriasInscriptasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MateriasInscriptasMouseClicked
+//        // TODO add your handling code here:
+//        int alu = jCBAlumno.getSelectedIndex();
+//        InscripcionData insc = new InscripcionData();
+//       
       
-    }//GEN-LAST:event_jRadioButton2MouseClicked
+    }//GEN-LAST:event_MateriasInscriptasMouseClicked
+
+    private void jCBAlumnoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBAlumnoItemStateChanged
+////        BorrarFilas();
+        Alumno alum = (Alumno) jCBAlumno.getSelectedItem();
+        int alu = alum.getIdAlumno();
+        InscripcionData insc = new InscripcionData();
+        boolean activo  = MateriasNoInscriptas.isSelected();
+        boolean activo1 = MateriasInscriptas.isSelected();
+        if (activo == true) {
+            for (Materia ins : insc.ObtenerMateriasNoCursadas(alu)) {
+                modelo.addRow(new Object[]{ins.getIdMateria(), ins.getNombre(), ins.getAnioMateria()});
+            }
+
+        } else if (activo1 == true) {
+            for (Materia ins : insc.ObtenerMateriasCursadas(alu)) {
+                modelo.addRow(new Object[]{ins.getIdMateria(), ins.getNombre(), ins.getAnioMateria()});
+            }
+        }
+ 
+        
+    }//GEN-LAST:event_jCBAlumnoItemStateChanged
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton MateriasInscriptas;
     private javax.swing.JRadioButton MateriasNoInscriptas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jCBAlumno;
+    private javax.swing.JComboBox<Alumno> jCBAlumno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
@@ -211,8 +245,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
 public void CargarCombo(){
   AlumnoData da = new AlumnoData();
  for ( Alumno alu : da.listaAlumnos()){
-     jCBAlumno.addItem("id "+alu.getIdAlumno()+" "+alu.getApellido()+" "+alu.getNombre()+" Dni:"+alu.getDni());
- 
+     jCBAlumno.addItem(alu);
  }
 }
  
@@ -227,7 +260,6 @@ public void CargarCombo(){
         
         int filas = jTable1.getRowCount()-1;
         for(int f = filas; f >= 0 ; f--){
-            
             modelo.removeRow(f);
         }
         
