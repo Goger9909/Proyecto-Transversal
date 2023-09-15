@@ -106,30 +106,34 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    Main main = new Main();
+  
     
     private void jFormularioAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormularioAlumnoActionPerformed
-        main.setVisible(true);
-        jEscritorio.add(main);
-        jEscritorio.moveToFront(main);
+        Gestión_de_Alumnos GA = new Gestión_de_Alumnos();
+        GA.setVisible(true);
+        jEscritorio.add(GA);
+        jEscritorio.moveToFront(GA);
     }//GEN-LAST:event_jFormularioAlumnoActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        main.setVisible(true);
-        jEscritorio.add(main);
-        jEscritorio.moveToFront(main);
+        Consulta_de_alumno_por_Matera GA = new Consulta_de_alumno_por_Matera();
+        GA.setVisible(true);
+        jEscritorio.add(GA);
+        jEscritorio.moveToFront(GA);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        main.setVisible(true);
-        jEscritorio.add(main);
-        jEscritorio.moveToFront(main);
+        Consulta_de_alumno_por_Matera GA = new Consulta_de_alumno_por_Matera();
+        GA.setVisible(true);
+        jEscritorio.add(GA);
+        jEscritorio.moveToFront(GA);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        main.setVisible(true);
-        jEscritorio.add(main);
-        jEscritorio.moveToFront(main);
+        Inscripciones ins = new Inscripciones(); 
+        ins.setVisible(true);
+        jEscritorio.add(ins);
+        jEscritorio.moveToFront(ins);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     
