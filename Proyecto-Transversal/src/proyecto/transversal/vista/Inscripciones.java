@@ -65,11 +65,6 @@ private DefaultTableModel modelo = new DefaultTableModel();
         jLabel3.setText(" Listado de Materias");
 
         MateriasNoInscriptas.setText("Materias no Inscriptas");
-        MateriasNoInscriptas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MateriasNoInscriptasMouseClicked(evt);
-            }
-        });
         MateriasNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MateriasNoInscriptasActionPerformed(evt);
@@ -77,9 +72,9 @@ private DefaultTableModel modelo = new DefaultTableModel();
         });
 
         MateriasInscriptas.setText("Materias Inscriptas");
-        MateriasInscriptas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MateriasInscriptasMouseClicked(evt);
+        MateriasInscriptas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MateriasInscriptasActionPerformed(evt);
             }
         });
 
@@ -173,58 +168,43 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
     private void MateriasNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MateriasNoInscriptasActionPerformed
-       
+         MateriasNoInscriptas.setSelected(true); 
+         MateriasInscriptas.setSelected(false);
       
        
     }//GEN-LAST:event_MateriasNoInscriptasActionPerformed
 
-    private void MateriasNoInscriptasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MateriasNoInscriptasMouseClicked
-//        // TODO add your handling code here:
-//        int alu = jCBAlumno.getSelectedIndex();
-//        InscripcionData insc= new InscripcionData();
-//        for (Materia ins : insc.ObtenerMateriasNoCursadas(alu)){
-//           modelo.addRow(new Object[]{ins.getIdMateria(),ins.getNombre(),ins.getAnioMateria()});
-//        }
-//      
-    }//GEN-LAST:event_MateriasNoInscriptasMouseClicked
-
-    private void MateriasInscriptasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MateriasInscriptasMouseClicked
-//        // TODO add your handling code here:
-//        int alu = jCBAlumno.getSelectedIndex();
-//        InscripcionData insc = new InscripcionData();
-//       
-      
-    }//GEN-LAST:event_MateriasInscriptasMouseClicked
-
     private void jCBAlumnoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBAlumnoItemStateChanged
-////        BorrarFilas();
         Alumno alum = (Alumno) jCBAlumno.getSelectedItem();
         int alu = alum.getIdAlumno();
         InscripcionData insc = new InscripcionData();
         boolean activo  = MateriasNoInscriptas.isSelected();
         boolean activo1 = MateriasInscriptas.isSelected();
-        if (activo == true) {
+        if (activo == true) { 
+            BorrarFilas();
             for (Materia ins : insc.ObtenerMateriasNoCursadas(alu)) {
                 modelo.addRow(new Object[]{ins.getIdMateria(), ins.getNombre(), ins.getAnioMateria()});
             }
-
         } else if (activo1 == true) {
+            BorrarFilas();
             for (Materia ins : insc.ObtenerMateriasCursadas(alu)) {
                 modelo.addRow(new Object[]{ins.getIdMateria(), ins.getNombre(), ins.getAnioMateria()});
             }
         }
- 
-        
     }//GEN-LAST:event_jCBAlumnoItemStateChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
+                this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void MateriasInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MateriasInscriptasActionPerformed
+       MateriasNoInscriptas.setSelected(false); 
+       MateriasInscriptas.setSelected(true);
+    }//GEN-LAST:event_MateriasInscriptasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -258,7 +238,6 @@ public void CargarCombo(){
  }
  
  private void BorrarFilas(){
-        
         int filas = jTable1.getRowCount()-1;
         for(int f = filas; f >= 0 ; f--){
             modelo.removeRow(f);
