@@ -154,7 +154,6 @@
         <Property name="text" type="java.lang.String" value="Materias no Inscriptas"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MateriasNoInscriptasMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MateriasNoInscriptasActionPerformed"/>
       </Events>
     </Component>
@@ -163,7 +162,7 @@
         <Property name="text" type="java.lang.String" value="Materias Inscriptas"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MateriasInscriptasMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MateriasInscriptasActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
