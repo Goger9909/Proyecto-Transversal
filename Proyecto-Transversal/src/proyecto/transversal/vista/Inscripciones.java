@@ -19,6 +19,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
         initComponents();
         CargarCombo();
         ArmarCabezera();
+        this.setLocation(100,100);
     }
 
     @SuppressWarnings("unchecked")
