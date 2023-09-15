@@ -141,21 +141,15 @@ public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 //muestra los alumnos por materia inscriptos
     private void jcSelecMateriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcSelecMateriaItemStateChanged
-        String nom = String.valueOf(jcSelecMateria.getSelectedItem());
-
         InscripcionData inscripcionData = new InscripcionData();
-        MateriaData md = new MateriaData();
-        int sele = 0;
-        for (Materia idMateria : md.listarMaterias()) {
-            if (idMateria.getNombre().equalsIgnoreCase(nom)) {
-                sele = idMateria.getIdMateria();
-            }
-        }
+        Materia sele = (Materia) jcSelecMateria.getSelectedItem();
+        int id = sele.getIdMateria();
+
         if (evt.getStateChange() == java.awt.event.ItemEvent.DESELECTED) {
 
             borraFila();
             // Agrega cada alumno al modelo de la tabla
-            for (Alumno al : inscripcionData.ObtenerAlumnoXMateria(sele)) {
+            for (Alumno al : inscripcionData.ObtenerAlumnoXMateria(id)) {
                 modelo.addRow(new Object[]{al.getIdAlumno(), al.getDni(), al.getApellido(), al.getNombre()});
             }
 
@@ -171,12 +165,12 @@ public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JComboBox<String> jcSelecMateria;
+    private javax.swing.JComboBox<Materia> jcSelecMateria;
     // End of variables declaration//GEN-END:variables
-public void cargarCombo() {
+  public void cargarCombo() {
         MateriaData mate = new MateriaData();
         for (Materia carga : mate.listarMaterias()) {
-            jcSelecMateria.addItem(carga.getNombre());
+            jcSelecMateria.addItem(carga);
         }
 
     }
