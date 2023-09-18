@@ -1,5 +1,7 @@
 package proyecto.transversal.vista;
 
+import javax.swing.JOptionPane;
+
 public class Main extends javax.swing.JFrame {
 
     public Main() {
@@ -11,6 +13,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         jEscritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -23,6 +26,9 @@ public class Main extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +102,15 @@ public class Main extends javax.swing.JFrame {
                 jMenu5ActionPerformed(evt);
             }
         });
+
+        jMenuItem6.setText("Salir");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem6);
+
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -124,7 +139,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jFormularioAlumnoActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        Consulta_de_alumno_por_Matera GA = new Consulta_de_alumno_por_Matera();
+        Consulta_de_alumno_por_Materia GA = new Consulta_de_alumno_por_Materia();
         GA.setVisible(true);
         jEscritorio.add(GA);
         jEscritorio.moveToFront(GA);
@@ -146,8 +161,16 @@ public class Main extends javax.swing.JFrame {
 
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+     
     }//GEN-LAST:event_jMenu5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+           int op =JOptionPane.showConfirmDialog(null, "Esta seguro de salir","Gracias", JOptionPane.YES_NO_OPTION);
+        if(op ==0){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     
     public static void main(String args[]) {
@@ -191,9 +214,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     // End of variables declaration//GEN-END:variables
 }
