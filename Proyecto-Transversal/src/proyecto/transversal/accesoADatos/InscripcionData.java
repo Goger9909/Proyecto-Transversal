@@ -13,9 +13,13 @@ import proyecto.transversal.entidades.Alumno;
 import proyecto.transversal.entidades.Inscripcion;
 import proyecto.transversal.entidades.Materia;
 
+/**
+ *
+ * @author yamiilaalejandra
+ */
 public class InscripcionData {
     
-    private Connection con = null;
+    private  Connection con = null;
     private  MateriaData md = new MateriaData(); 
     private  AlumnoData ad = new AlumnoData(); 
 
@@ -23,7 +27,7 @@ public class InscripcionData {
         con = Conexion.getConexion();
     }
 
-    public void GuardarInscripcion(Inscripcion insc) {
+  public void GuardarInscripcion(Inscripcion insc) {
         try {
             String sql = "INSERT INTO inscripcion(nota, idAlumno, idMateria) VALUES (?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -42,7 +46,7 @@ public class InscripcionData {
         }
     }
     
-    public List<Inscripcion> ObtenerInscripciones(){
+  public List<Inscripcion> ObtenerInscripciones(){
     ArrayList<Inscripcion> cursada = new ArrayList<>();
     String sql = "SELECT * FROM inscripcion;";
         try {
@@ -65,7 +69,7 @@ public class InscripcionData {
         return cursada;
  }      
    
-     public List<Inscripcion> ObtenerInscripcionesPorAlumno(int idAlumno){
+  public List<Inscripcion> ObtenerInscripcionesPorAlumno(int idAlumno){
         List<Inscripcion> cursada = new ArrayList<>();
         String sql = "SELECT * FROM inscripcion WHERE idAlumno = ? ";
         try {
@@ -89,7 +93,7 @@ public class InscripcionData {
         return cursada; 
         }
  
-   public void ActualizarNota(int idAlumno,int idMateria, double nota){
+  public void ActualizarNota(int idAlumno,int idMateria, double nota){
      String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? AND idMateria = ?";
       try {
           PreparedStatement ps = con.prepareStatement(sql);
@@ -109,7 +113,7 @@ public class InscripcionData {
     
  }
    
-     public void BorrarInscripcionMateriaAlumno(int idAlumno , int idMateria){
+  public void BorrarInscripcionMateriaAlumno(int idAlumno , int idMateria){
      String sql = "DELETE FROM `inscripcion` WHERE idAlumno = ? AND idMateria = ?";
      try {
          PreparedStatement ps = con.prepareStatement(sql); 
@@ -128,7 +132,7 @@ public class InscripcionData {
 
  }
  
-   public List<Materia> ObtenerMateriasCursadas(int idAlumno){
+  public List<Materia> ObtenerMateriasCursadas(int idAlumno){
          ArrayList<Materia> materias = new ArrayList<>();
          String sql = "SELECT inscripcion.idMateria , nombre , año FROM inscripcion , "
            + "materia WHERE inscripcion.idMateria = materia.idMateria AND inscripcion.idAlumno = ?";
@@ -150,7 +154,7 @@ public class InscripcionData {
      return materias;
      }
     
-   public List<Materia> ObtenerMateriasNoCursadas(int idAlumno){
+  public List<Materia> ObtenerMateriasNoCursadas(int idAlumno){
          ArrayList<Materia> materias = new ArrayList<>();
          String sql = "SELECT * FROM materia WHERE estado = 1 AND idMateria not in "
                  + "(SELECT idMateria FROM inscripcion WHERE idAlumno = ?)";
@@ -172,7 +176,7 @@ public class InscripcionData {
      return materias;
      } 
     
-    public List<Alumno> ObtenerAlumnoXMateria(int idMateria){
+  public List<Alumno> ObtenerAlumnoXMateria(int idMateria){
     ArrayList<Alumno> alumnosMateria = new ArrayList<>();
     String sql = "SELECT a.idAlumno,dni,nombre,apellido,estado "
             + "FROM inscripcion i , alumno a WHERE i.idAlumno = a.idAlumno AND idMateria = ? AND a.estado = 1 ";
