@@ -5,6 +5,7 @@
  */
 package proyecto.transversal.vista;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 import proyecto.transversal.accesoADatos.InscripcionData;
@@ -16,7 +17,7 @@ import proyecto.transversal.entidades.Materia;
  *
  * @author ferben007
  */
-public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
+public class Consulta_de_alumno_por_Materia extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int filas, int columnas) {
@@ -24,10 +25,11 @@ public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
         }
     };
 
-    public Consulta_de_alumno_por_Matera() {
+    public Consulta_de_alumno_por_Materia() {
         initComponents();
         cargarCombo();
         armarTabla();
+        
     }
 
     /**
@@ -76,6 +78,7 @@ public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Tabla.setGridColor(new java.awt.Color(255, 51, 255));
         jScrollPane1.setViewportView(Tabla);
 
         jcSelecMateria.addItemListener(new java.awt.event.ItemListener() {
@@ -141,19 +144,19 @@ public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 //muestra los alumnos por materia inscriptos
     private void jcSelecMateriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcSelecMateriaItemStateChanged
-        InscripcionData inscripcionData = new InscripcionData();
+        borraFila();
+        try {
+                InscripcionData inscripcionData = new InscripcionData();
         Materia sele = (Materia) jcSelecMateria.getSelectedItem();
         int id = sele.getIdMateria();
-
-        if (evt.getStateChange() == java.awt.event.ItemEvent.DESELECTED) {
-
-            borraFila();
-            // Agrega cada alumno al modelo de la tabla
-            for (Alumno al : inscripcionData.ObtenerAlumnoXMateria(id)) {
+        //borraFila();
+               for (Alumno al : inscripcionData.ObtenerAlumnoXMateria(id)) {
                 modelo.addRow(new Object[]{al.getIdAlumno(), al.getDni(), al.getApellido(), al.getNombre()});
             }
-
+               
+        } catch (Exception e) {
         }
+       
     }//GEN-LAST:event_jcSelecMateriaItemStateChanged
 
 
@@ -169,10 +172,10 @@ public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
   public void cargarCombo() {
         MateriaData mate = new MateriaData();
+        jcSelecMateria.addItem( jcSelecMateria.getItemAt(-1));
         for (Materia carga : mate.listarMaterias()) {
             jcSelecMateria.addItem(carga);
         }
-
     }
 
     public void armarTabla() {
@@ -185,6 +188,7 @@ public class Consulta_de_alumno_por_Matera extends javax.swing.JInternalFrame {
 
     private void borraFila() {
         int fila = Tabla.getRowCount() - 1;
+        
         for (int f = fila; f >= 0; f--) {
             modelo.removeRow(f);
         }
