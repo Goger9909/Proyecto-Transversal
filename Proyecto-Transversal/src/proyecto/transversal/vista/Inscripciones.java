@@ -190,9 +190,12 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
     private void MateriasNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MateriasNoInscriptasActionPerformed
          MateriasNoInscriptas.setSelected(true); 
          MateriasInscriptas.setSelected(false);
+         AnularInscripcion.setEnabled(false);
+         Inscribir.setEnabled(true);
     }//GEN-LAST:event_MateriasNoInscriptasActionPerformed
 
     private void jCBAlumnoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBAlumnoItemStateChanged
+      try{
         Alumno alumno = (Alumno) jCBAlumno.getSelectedItem();
         int idA = alumno.getIdAlumno();
         InscripcionData insc = new InscripcionData();
@@ -209,6 +212,8 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
                 modelo.addRow(new Object[]{ins.getIdMateria(), ins.getNombre(), ins.getAnioMateria()});
             }
         }
+      }catch(Exception ex){
+        }
     }//GEN-LAST:event_jCBAlumnoItemStateChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -218,6 +223,8 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
     private void MateriasInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MateriasInscriptasActionPerformed
        MateriasNoInscriptas.setSelected(false); 
        MateriasInscriptas.setSelected(true);
+       Inscribir.setEnabled(false);
+       AnularInscripcion.setEnabled(true);
     }//GEN-LAST:event_MateriasInscriptasActionPerformed
 
     private void InscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InscribirActionPerformed
@@ -243,7 +250,7 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
         InscripcionData insc = new InscripcionData();
         insc.GuardarInscripcion(ins);
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "Error en los datos" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en los datos");
         }
     }//GEN-LAST:event_InscribirActionPerformed
 
@@ -268,7 +275,7 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
         InscripcionData insc = new InscripcionData();
         insc.BorrarInscripcionMateriaAlumno(idA, idM); //Eliminamos una Inscripcion 
        }catch(Exception ex){
-           JOptionPane.showMessageDialog(null, "Error en los datos" + ex.getMessage());
+           JOptionPane.showMessageDialog(null, "Error en los datos");
        }
         
     }//GEN-LAST:event_AnularInscripcionActionPerformed
@@ -291,8 +298,9 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable;
     // End of variables declaration//GEN-END:variables
 
-public void CargarCombo(){
+ public void CargarCombo(){
   AlumnoData Ad = new AlumnoData();
+  jCBAlumno.addItem(jCBAlumno.getItemAt(-1));
  for ( Alumno alumno : Ad.listaAlumnos()){
      jCBAlumno.addItem(alumno);
  }
