@@ -5,9 +5,12 @@
  */
 package proyecto.transversal.vista;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyecto.transversal.accesoADatos.AlumnoData;
 import proyecto.transversal.accesoADatos.InscripcionData;
+import proyecto.transversal.accesoADatos.MateriaData;
 import proyecto.transversal.entidades.Alumno;
 import proyecto.transversal.entidades.Inscripcion;
 import proyecto.transversal.entidades.Materia;
@@ -77,6 +80,11 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(Tabla);
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +134,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbGuardar)
                     .addComponent(jbSalir))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -149,14 +157,49 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcAlumnosItemStateChanged
-        // TODO add your handling code here:
-        InscripcionData is = new InscripcionData();
-        Alumno al =(Alumno)jcAlumnos.getSelectedItem();
-        int id = al.getIdAlumno();
-        for (Inscripcion materia : is.ObtenerInscripcionesPorAlumno(id)) {
-            modelo.addRow(new Object []{materia.getIdIncripcion(), materia.getMateria(),materia.getNota() });
-        }
+    borraFila();
+    InscripcionData is = new InscripcionData();
+    Alumno al = (Alumno) jcAlumnos.getSelectedItem();
+    int id = al.getIdAlumno();
+    ArrayList<Inscripcion> inscripciones = (ArrayList<Inscripcion>) is.ObtenerInscripcionesPorAlumno(id);
+    
+    if (!inscripciones.isEmpty()) {
+        MateriaData materia = new MateriaData();
+        for (Inscripcion inscripcion : inscripciones) {
+            int idm = inscripcion.getMateria().getIdMateria(); // idm= ID materia
+            String nombreMateria = materia.buscarMateria(idm).getNombre();
+            modelo.addRow(new Object[]{inscripcion.getIdIncripcion(), nombreMateria, inscripcion.getNota()});
+        }}
     }//GEN-LAST:event_jcAlumnosItemStateChanged
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        String name = JOptionPane.showInputDialog("Coloque la nota");
+        int idm = 0;
+        
+    if (name != null) {
+        try {
+            double nota = Integer.parseInt(name); // Obtener la nota
+            int filaSeleccionada = Tabla.getSelectedRow(); // Obtener la fila seleccionada
+            
+            if (filaSeleccionada != -1) { // Asegurarse de que se haya seleccionado una fila
+                Alumno al = (Alumno) jcAlumnos.getSelectedItem();
+                int id = al.getIdAlumno();
+                InscripcionData is = new InscripcionData();
+                
+                ArrayList<Inscripcion> inscripciones = (ArrayList<Inscripcion>) is.ObtenerInscripcionesPorAlumno(id);
+
+                Inscripcion inscripcion = inscripciones.get(filaSeleccionada);
+                idm = inscripcion.getMateria().getIdMateria();
+                
+                is.ActualizarNota(id, idm, nota);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un número válido");
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "No colocó ninguna nota");
+    }
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
