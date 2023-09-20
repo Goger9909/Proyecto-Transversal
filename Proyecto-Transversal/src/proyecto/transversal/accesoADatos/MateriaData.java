@@ -39,7 +39,7 @@ public class MateriaData {
             if(rs.next()){
             
                 materia.setIdMateria(rs.getInt(1)); // es la primer columna la del id
-                JOptionPane.showMessageDialog(null, "La Materia se guardo con exito");
+                JOptionPane.showMessageDialog(null, "La Materia se guardo con exito, ID: "+materia.getIdMateria());
            }
             ps.close();
             

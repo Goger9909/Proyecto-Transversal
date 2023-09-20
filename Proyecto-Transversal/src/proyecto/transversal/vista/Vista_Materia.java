@@ -5,6 +5,10 @@
  */
 package proyecto.transversal.vista;
 
+import javax.swing.JOptionPane;
+import proyecto.transversal.accesoADatos.MateriaData;
+import proyecto.transversal.entidades.Materia;
+
 /**
  *
  * @author Usuario
@@ -84,10 +88,20 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
         jbEliminar.setText("Eliminar");
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.setMaximumSize(new java.awt.Dimension(79, 25));
         jbSalir.setMinimumSize(new java.awt.Dimension(79, 25));
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,9 +191,59 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    MateriaData md = new MateriaData();
+    private boolean modificar=false;
+    private int id;
+    private String nombre = null;
+    private int anioMat;
+    boolean activo;
+    
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        // TODO add your handling code here:
+        
+        try{
+            id = Integer.parseInt(jtfCodigo.getText());
+            Materia mate = md.buscarMateria(id);
+            nombre = mate.getNombre();
+            anioMat = mate.getAnioMateria();
+            activo = mate.isActivo();
+            
+            jtfNombre.setText(nombre);
+            jtfAnio.setText(anioMat+"");
+            jrbEstado.setSelected(activo);
+//            modificar=true;
+            
+        }catch(NullPointerException ex){
+            // no la manejo aqui, ya que el mismo metodo de "buscarMateria(int id)" en MateriaData me tira el mensaje...
+//            JOptionPane.showMessageDialog(this, "");
+            jtfNombre.setText("");
+            jtfAnio.setText(null);
+            jrbEstado.setSelected(false);
+//            modificar=false;   
+        }catch (NumberFormatException ex){
+            // en caso de que el usuario deje el ID vacio
+            JOptionPane.showMessageDialog(null, "Debe ingresar un numero para la consulta");
+            
+        }
+            
+                    
     }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+       // PARA GUARDAR MATERIA
+//        id=Integer.parseInt(jtfCodigo.getText());
+        nombre=jtfNombre.getText();
+        anioMat=Integer.parseInt(jtfAnio.getText());
+        activo=jrbEstado.isSelected();
+        
+        Materia mat=new Materia(id,nombre,anioMat,activo);
+        md.guardarMateria(mat);
+        
+        
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
