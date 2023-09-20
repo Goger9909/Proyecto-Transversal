@@ -75,7 +75,7 @@ public class MateriaData {
     }
         
     public void eliminarMateria(int id){
-        
+    // eliminarMateria aplica un borrado logico  
         String sql = "UPDATE materia SET estado=0 WHERE idMateria=?";
         
         try {

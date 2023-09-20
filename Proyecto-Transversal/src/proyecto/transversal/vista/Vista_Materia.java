@@ -20,8 +20,10 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
      */
     public Vista_Materia() {
         initComponents();
+        jbNuevo.setEnabled(false);
+        jbEliminar.setEnabled(false);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -86,6 +88,11 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
         jbNuevo.setMinimumSize(new java.awt.Dimension(79, 25));
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -108,41 +115,36 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jlCodigo))
+                    .addComponent(jlCodigo)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlNombre)
-                                    .addComponent(jlAnio)
-                                    .addComponent(jlEstado))
-                                .addGap(53, 53, 53))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)))
+                            .addComponent(jlNombre)
+                            .addComponent(jlAnio)
+                            .addComponent(jlEstado))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
                                 .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jbBuscar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jbGuardar)
-                                        .addGap(47, 47, 47)
-                                        .addComponent(jbEliminar)
-                                        .addGap(40, 40, 40)
-                                        .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jtfAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jrbEstado)))
-                                .addGap(0, 24, Short.MAX_VALUE)))))
+                                        .addComponent(jrbEstado))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(jbGuardar)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jbEliminar)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 19, Short.MAX_VALUE)))))
                 .addGap(102, 102, 102))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +181,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
                             .addComponent(jtfAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(56, 56, 56)
                         .addComponent(jlEstado)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbEliminar)
@@ -192,11 +194,11 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     MateriaData md = new MateriaData();
-    private boolean modificar=false;
+//    private boolean modificar=false;
     private int id;
     private String nombre = null;
     private int anioMat;
-    boolean activo;
+    boolean activo=false;
     
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         
@@ -204,46 +206,91 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
             id = Integer.parseInt(jtfCodigo.getText());
             Materia mate = md.buscarMateria(id);
             nombre = mate.getNombre();
-            anioMat = mate.getAnioMateria();
+            anioMat = mate.getAnioMateria();            
             activo = mate.isActivo();
             
             jtfNombre.setText(nombre);
             jtfAnio.setText(anioMat+"");
             jrbEstado.setSelected(activo);
+            
 //            modificar=true;
             
         }catch(NullPointerException ex){
             // no la manejo aqui, ya que el mismo metodo de "buscarMateria(int id)" en MateriaData me tira el mensaje...
 //            JOptionPane.showMessageDialog(this, "");
-            jtfNombre.setText("");
+            jtfNombre.setText(null);
             jtfAnio.setText(null);
             jrbEstado.setSelected(false);
+            activo=false;
+//            jbEliminar.setEnabled(false);
+            
 //            modificar=false;   
         }catch (NumberFormatException ex){
             // en caso de que el usuario deje el ID vacio
             JOptionPane.showMessageDialog(null, "Debe ingresar un numero para la consulta");
-            
+            jtfNombre.setText(null);
+            jtfAnio.setText(null);
+            jrbEstado.setSelected(false);
+            activo=false;
+//            jbEliminar.setEnabled(false);
         }
-            
-                    
+        if(activo == true){
+            jbEliminar.setEnabled(true);   
+        }  else{
+            jbEliminar.setEnabled(false);
+        }         
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
        // PARA GUARDAR MATERIA
-//        id=Integer.parseInt(jtfCodigo.getText());
-        nombre=jtfNombre.getText();
-        anioMat=Integer.parseInt(jtfAnio.getText());
-        activo=jrbEstado.isSelected();
+       
+        id=Integer.parseInt(jtfCodigo.getText());
         
-        Materia mat=new Materia(id,nombre,anioMat,activo);
-        md.guardarMateria(mat);
-        
+        if(id == md.buscarMateria(id).getIdMateria()){
+           try{ 
+           nombre =jtfNombre.getText();
+           anioMat=Integer.parseInt(jtfAnio.getText());
+           activo = jrbEstado.isSelected();
+           Materia mat= new Materia(id,nombre,anioMat,activo);
+           md.modificarMateria(mat);
+           }catch(NumberFormatException ex){
+               
+               JOptionPane.showMessageDialog(null, "Debe agregar solo números en año");
+               jtfAnio.setText(null);
+               
+           }catch (NullPointerException ex) {
+               
+               JOptionPane.showMessageDialog(null, "No debe haber campos vacios");     
+           } 
+        } else {
+            nombre =jtfNombre.getText();
+            anioMat=Integer.parseInt(jtfAnio.getText());
+            activo = jrbEstado.isSelected();
+            Materia mat = new Materia(nombre,anioMat,activo);
+            md.guardarMateria(mat);
+        }
         
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+//        try{
+        id=Integer.parseInt(jtfCodigo.getText());
+        activo=jrbEstado.isSelected();
+        if(activo == true){
+            md.eliminarMateria(id);
+            jrbEstado.isSelected();
+        }else{
+            
+        }
+        
+//        }catch (NullPointerException ex){
+//        JOptionPane.showMessageDialog(null, "Debe Seleccionar una materia para eliminar");
+//        }
+    }//GEN-LAST:event_jbEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
