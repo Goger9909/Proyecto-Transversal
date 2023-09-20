@@ -21,7 +21,7 @@ public class MateriaData {
     
         con = Conexion.getConexion();
     }
-
+// ESTE METODO USAMOS PARA CUANDO CREAMOS UNA MATERIA POR PRIMERA VEZ, YA QUE LE ASIGNA UN ID EN LA BD
     public void guardarMateria(Materia materia){
         
         String sql = "INSERT INTO materia (nombre, año, estado)" 
@@ -48,18 +48,21 @@ public class MateriaData {
         }
     }
     
-       
+    // ESTE METODO USAMOS PARA MODIFICAR LAS MATERIAS YA CARGADAS, PODEMOS ELIMINAR O HABILITAR NUEVAMENTE DICHAS MATERIAS   
     public void modificarMateria(Materia materia){
         
-            String sql = "UPDATE materia SET nombre= ?, año= ? "
-                    +"WHERE idMateria = ? ";
+            String sql = "UPDATE materia SET nombre= ? , año= ? , estado = ? "
+                        +" WHERE idMateria = ? ";
+            
+//            UPDATE materia SET nombre = 'Psicologia', año = 2 , estado = true WHERE idMateria = 16;
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             
-            ps.setString(1, materia.getNombre());
+            ps.setString(1,materia.getNombre());
             ps.setInt(2,materia.getAnioMateria());
-            ps.setInt(3,materia.getIdMateria());
+            ps.setBoolean(3, true);
+            ps.setInt(4,materia.getIdMateria());
             int exito = ps.executeUpdate();
             if(exito == 1){
                 

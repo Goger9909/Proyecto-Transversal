@@ -243,16 +243,34 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
        // PARA GUARDAR MATERIA
+       try{
+       id=Integer.parseInt(jtfCodigo.getText());
+       }catch(NullPointerException | NumberFormatException ex){
+               JOptionPane.showMessageDialog(null, "PROBANDO A VER SI PASA");
+                boolean decision=false;
+               }
+       boolean decision=false;
+       try{
+       if(md.buscarMateria(id).getIdMateria()==id){
+           decision = true;
+       } 
+       }catch(NullPointerException ex){
+           JOptionPane.showMessageDialog(null, "Se agragara como materia nueva");
+           decision = false;
+       }
+       if(decision==true){
+       //ME EDITA LA MATERIA CORRECTAMENTE
        
-        id=Integer.parseInt(jtfCodigo.getText());
-        
-        if(id == md.buscarMateria(id).getIdMateria()){
-           try{ 
+           System.out.println("entra a la parte de editar");
+           JOptionPane.showMessageDialog(null, "Entra a Editar (1)");
+       try{ 
            nombre =jtfNombre.getText();
            anioMat=Integer.parseInt(jtfAnio.getText());
            activo = jrbEstado.isSelected();
+           System.out.println(id+"-"+nombre+"-"+anioMat+"-"+activo);
            Materia mat= new Materia(id,nombre,anioMat,activo);
            md.modificarMateria(mat);
+           
            }catch(NumberFormatException ex){
                
                JOptionPane.showMessageDialog(null, "Debe agregar solo números en año");
@@ -261,15 +279,24 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
            }catch (NullPointerException ex) {
                
                JOptionPane.showMessageDialog(null, "No debe haber campos vacios");     
-           } 
-        } else {
+           }
+       
+       }else if(decision==false){
+       
+       System.out.println("entro a guardar Materia");
+       JOptionPane.showMessageDialog(null, "Entra a GUARDAR (2)");
             nombre =jtfNombre.getText();
             anioMat=Integer.parseInt(jtfAnio.getText());
+//            System.out.println(""+jrbEstado.isSelected());
             activo = jrbEstado.isSelected();
+//            System.out.println(""+nombre+"-"+anioMat+"-"+activo);
             Materia mat = new Materia(nombre,anioMat,activo);
             md.guardarMateria(mat);
-        }
-        
+       }    
+            
+
+       
+          
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
