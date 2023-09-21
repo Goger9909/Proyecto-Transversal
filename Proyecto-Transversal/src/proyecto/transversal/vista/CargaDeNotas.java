@@ -21,13 +21,13 @@ import proyecto.transversal.entidades.Materia;
  */
 public class CargaDeNotas extends javax.swing.JInternalFrame {
 
- private DefaultTableModel modelo = new DefaultTableModel(){
-      public boolean isCellEditable(int filas, int columnas) {
-          
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int filas, int columnas) {
+
             return false;
         }
- };
- 
+    };
+
     public CargaDeNotas() {
         initComponents();
         cargarModelo();
@@ -157,48 +157,50 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcAlumnosItemStateChanged
-    borraFila();
-    InscripcionData is = new InscripcionData();
-    Alumno al = (Alumno) jcAlumnos.getSelectedItem();
-    int id = al.getIdAlumno();
-    ArrayList<Inscripcion> inscripciones = (ArrayList<Inscripcion>) is.ObtenerInscripcionesPorAlumno(id);
-    
-    if (!inscripciones.isEmpty()) {
-        MateriaData materia = new MateriaData();
-        for (Inscripcion inscripcion : inscripciones) {
-            int idm = inscripcion.getMateria().getIdMateria(); // idm= ID materia
-            String nombreMateria = materia.buscarMateria(idm).getNombre();
-            modelo.addRow(new Object[]{inscripcion.getIdIncripcion(), nombreMateria, inscripcion.getNota()});
-        }}
+        borraFila();
+        InscripcionData is = new InscripcionData();
+        Alumno al = (Alumno) jcAlumnos.getSelectedItem();
+        int id = al.getIdAlumno();
+        ArrayList<Inscripcion> inscripciones = (ArrayList<Inscripcion>) is.ObtenerInscripcionesPorAlumno(id);
+
+        if (!inscripciones.isEmpty()) {
+            MateriaData materia = new MateriaData();
+            for (Inscripcion inscripcion : inscripciones) {
+                int idm = inscripcion.getMateria().getIdMateria(); // idm= ID materia
+                String nombreMateria = materia.buscarMateria(idm).getNombre();
+                modelo.addRow(new Object[]{inscripcion.getIdIncripcion(), nombreMateria, inscripcion.getNota()});
+            }
+        }
     }//GEN-LAST:event_jcAlumnosItemStateChanged
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        String name = JOptionPane.showInputDialog("Coloque la nota");
+
         int idm = 0;
-        
-    if (name != null) {
+
         try {
-            double nota = Integer.parseInt(name); // Obtener la nota
+
             int filaSeleccionada = Tabla.getSelectedRow(); // Obtener la fila seleccionada
-            
+
             if (filaSeleccionada != -1) { // Asegurarse de que se haya seleccionado una fila
+                String name = JOptionPane.showInputDialog("Coloque la nota");
+                double nota = Integer.parseInt(name);// Obtener la nota
                 Alumno al = (Alumno) jcAlumnos.getSelectedItem();
                 int id = al.getIdAlumno();
                 InscripcionData is = new InscripcionData();
-                
+
                 ArrayList<Inscripcion> inscripciones = (ArrayList<Inscripcion>) is.ObtenerInscripcionesPorAlumno(id);
 
                 Inscripcion inscripcion = inscripciones.get(filaSeleccionada);
                 idm = inscripcion.getMateria().getIdMateria();
-                
+
                 is.ActualizarNota(id, idm, nota);
+            } else {
+                JOptionPane.showMessageDialog(null, "No seleciono ninguna materia.");
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un número válido");
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "No colocó ninguna nota");
-    }
+//    } 
     }//GEN-LAST:event_jbGuardarActionPerformed
 
 
@@ -212,21 +214,23 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<Alumno> jcAlumnos;
     // End of variables declaration//GEN-END:variables
-public void cargarModelo(){
-    modelo.addColumn("Codigo");
-    modelo.addColumn("Nombre");
-    modelo.addColumn("Nota");
-    Tabla.setModel(modelo);
-}
-public void cargaAlumno(){
-    AlumnoData al = new AlumnoData();
-    for (Alumno alumno : al.listaAlumnos()) {
-        jcAlumnos.addItem(alumno);
+public void cargarModelo() {
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Nota");
+        Tabla.setModel(modelo);
     }
-}
-  private void borraFila() {
+
+    public void cargaAlumno() {
+        AlumnoData al = new AlumnoData();
+        for (Alumno alumno : al.listaAlumnos()) {
+            jcAlumnos.addItem(alumno);
+        }
+    }
+
+    private void borraFila() {
         int fila = Tabla.getRowCount() - 1;
-        
+
         for (int f = fila; f >= 0; f--) {
             modelo.removeRow(f);
         }

@@ -23,7 +23,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
         jbNuevo.setEnabled(false);
         jbEliminar.setEnabled(false);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -198,105 +198,115 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
     private int id;
     private String nombre = null;
     private int anioMat;
-    boolean activo=false;
-    
+    boolean activo = false;
+
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        
-        try{
+
+        try {
             id = Integer.parseInt(jtfCodigo.getText());
             Materia mate = md.buscarMateria(id);
             nombre = mate.getNombre();
-            anioMat = mate.getAnioMateria();            
+            anioMat = mate.getAnioMateria();
             activo = mate.isActivo();
-            
+
             jtfNombre.setText(nombre);
-            jtfAnio.setText(anioMat+"");
+            jtfAnio.setText(anioMat + "");
             jrbEstado.setSelected(activo);
-            
+
 //            modificar=true;
-            
-        }catch(NullPointerException ex){
+        } catch (NullPointerException ex) {
             // no la manejo aqui, ya que el mismo metodo de "buscarMateria(int id)" en MateriaData me tira el mensaje...
 //            JOptionPane.showMessageDialog(this, "");
             jtfNombre.setText(null);
             jtfAnio.setText(null);
             jrbEstado.setSelected(false);
-            activo=false;
+            activo = false;
 //            jbEliminar.setEnabled(false);
-            
+
 //            modificar=false;   
-        }catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             // en caso de que el usuario deje el ID vacio
             JOptionPane.showMessageDialog(null, "Debe ingresar un numero para la consulta");
             jtfNombre.setText(null);
             jtfAnio.setText(null);
             jrbEstado.setSelected(false);
-            activo=false;
+            activo = false;
 //            jbEliminar.setEnabled(false);
         }
-        if(activo == true){
-            jbEliminar.setEnabled(true);   
-        }  else{
+        if (activo == true) {
+            jbEliminar.setEnabled(true);
+        } else {
             jbEliminar.setEnabled(false);
-        }         
+        }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-       // PARA GUARDAR MATERIA
-       try{
-       id=Integer.parseInt(jtfCodigo.getText());
-       }catch(NullPointerException | NumberFormatException ex){
-               JOptionPane.showMessageDialog(null, "PROBANDO A VER SI PASA");
-                boolean decision=false;
-               }
-       boolean decision=false;
-       try{
-       if(md.buscarMateria(id).getIdMateria()==id){
-           decision = true;
-       } 
-       }catch(NullPointerException ex){
-           JOptionPane.showMessageDialog(null, "Se agragara como materia nueva");
-           decision = false;
-       }
-       if(decision==true){
-       //ME EDITA LA MATERIA CORRECTAMENTE
-       
-           System.out.println("entra a la parte de editar");
-           JOptionPane.showMessageDialog(null, "Entra a Editar (1)");
-       try{ 
-           nombre =jtfNombre.getText();
-           anioMat=Integer.parseInt(jtfAnio.getText());
-           activo = jrbEstado.isSelected();
-           System.out.println(id+"-"+nombre+"-"+anioMat+"-"+activo);
-           Materia mat= new Materia(id,nombre,anioMat,activo);
-           md.modificarMateria(mat);
-           
-           }catch(NumberFormatException ex){
-               
-               JOptionPane.showMessageDialog(null, "Debe agregar solo números en año");
-               jtfAnio.setText(null);
-               
-           }catch (NullPointerException ex) {
-               
-               JOptionPane.showMessageDialog(null, "No debe haber campos vacios");     
-           }
-       
-       }else if(decision==false){
-       
-       System.out.println("entro a guardar Materia");
-       JOptionPane.showMessageDialog(null, "Entra a GUARDAR (2)");
-            nombre =jtfNombre.getText();
-            anioMat=Integer.parseInt(jtfAnio.getText());
+        // PARA GUARDAR MATERIA
+        try {
+            id = Integer.parseInt(jtfCodigo.getText());
+        } catch (NullPointerException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "PROBANDO A VER SI PASA");
+            boolean decision = false;
+        }
+        boolean decision = false;
+        try {
+            if (md.buscarMateria(id).getIdMateria() == id) {
+                decision = true;
+            }
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Se agragara como materia nueva");
+            decision = false;
+        }
+        if (decision == true) {
+            //ME EDITA LA MATERIA CORRECTAMENTE
+
+            System.out.println("entra a la parte de editar");
+            JOptionPane.showMessageDialog(null, "Entra a Editar (1)");
+            try {
+                nombre = jtfNombre.getText();
+                anioMat = Integer.parseInt(jtfAnio.getText());
+                activo = jrbEstado.isSelected();
+                System.out.println(id + "-" + nombre + "-" + anioMat + "-" + activo);
+                Materia mat = new Materia(id, nombre, anioMat, activo);
+                md.modificarMateria(mat);
+
+            } catch (NumberFormatException ex) {
+
+                JOptionPane.showMessageDialog(null, "Debe agregar solo números en año");
+                jtfAnio.setText(null);
+
+            } catch (NullPointerException ex) {
+
+                JOptionPane.showMessageDialog(null, "No debe haber campos vacios");
+            }
+
+        } else if (decision == false) {
+
+            //System.out.println("entro a guardar Materia");
+            //JOptionPane.showMessageDialog(null, "Entra a GUARDAR (2)");
+            nombre = jtfNombre.getText();
+            anioMat = Integer.parseInt(jtfAnio.getText());
 //            System.out.println(""+jrbEstado.isSelected());
             activo = jrbEstado.isSelected();
+            MateriaData mD = new MateriaData();
+            String nombreMateria = null;
+            boolean re = false;
+            for (Materia bus : mD.listarMaterias()) {
+                nombreMateria = bus.getNombre();
+                if (nombreMateria.equalsIgnoreCase(nombre)) {
+                    JOptionPane.showMessageDialog(null, "Materia repetida");
+                    re = true;
+                }
+            }
+            if (re == false) {
+                Materia mat = new Materia(nombre, anioMat, activo);
+                md.guardarMateria(mat);
+            }
 //            System.out.println(""+nombre+"-"+anioMat+"-"+activo);
-            Materia mat = new Materia(nombre,anioMat,activo);
-            md.guardarMateria(mat);
-       }    
-            
 
-       
-          
+        }
+
+
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
@@ -305,15 +315,15 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
 //        try{
-        id=Integer.parseInt(jtfCodigo.getText());
-        activo=jrbEstado.isSelected();
-        if(activo == true){
+        id = Integer.parseInt(jtfCodigo.getText());
+        activo = jrbEstado.isSelected();
+        if (activo == true) {
             md.eliminarMateria(id);
             jrbEstado.isSelected();
-        }else{
-            
+        } else {
+
         }
-        
+
 //        }catch (NullPointerException ex){
 //        JOptionPane.showMessageDialog(null, "Debe Seleccionar una materia para eliminar");
 //        }
