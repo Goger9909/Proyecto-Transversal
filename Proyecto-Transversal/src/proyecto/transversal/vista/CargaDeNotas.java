@@ -157,19 +157,26 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcAlumnosItemStateChanged
+//        borraFila();
+//        InscripcionData is = new InscripcionData();
+//        Alumno al = (Alumno) jcAlumnos.getSelectedItem();
+//        int id = al.getIdAlumno();
+//        ArrayList<Inscripcion> inscripciones = (ArrayList<Inscripcion>) is.ObtenerInscripcionesPorAlumno(id);
+//
+//        if (!inscripciones.isEmpty()) {
+//            MateriaData materia = new MateriaData();
+//            for (Inscripcion inscripcion : inscripciones) {
+//                int idm = inscripcion.getMateria().getIdMateria(); // idm= ID materia
+//                String nombreMateria = materia.buscarMateria(idm).getNombre();
+//                modelo.addRow(new Object[]{inscripcion.getIdIncripcion(), nombreMateria, inscripcion.getNota()});
+//            }
+//        }
         borraFila();
         InscripcionData is = new InscripcionData();
-        Alumno al = (Alumno) jcAlumnos.getSelectedItem();
+        Alumno al =(Alumno)jcAlumnos.getSelectedItem();
         int id = al.getIdAlumno();
-        ArrayList<Inscripcion> inscripciones = (ArrayList<Inscripcion>) is.ObtenerInscripcionesPorAlumno(id);
-
-        if (!inscripciones.isEmpty()) {
-            MateriaData materia = new MateriaData();
-            for (Inscripcion inscripcion : inscripciones) {
-                int idm = inscripcion.getMateria().getIdMateria(); // idm= ID materia
-                String nombreMateria = materia.buscarMateria(idm).getNombre();
-                modelo.addRow(new Object[]{inscripcion.getIdIncripcion(), nombreMateria, inscripcion.getNota()});
-            }
+        for (Inscripcion inscripcion : is.ObtenerInscripcionesPorAlumno(id)) {
+            modelo.addRow(new Object []{inscripcion.getIdIncripcion(), inscripcion.getMateria(),inscripcion.getNota() });
         }
     }//GEN-LAST:event_jcAlumnosItemStateChanged
 
@@ -197,6 +204,13 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "No seleciono ninguna materia.");
             }
+            borraFila();
+             InscripcionData is = new InscripcionData();
+        Alumno al =(Alumno)jcAlumnos.getSelectedItem();
+        int id = al.getIdAlumno();
+        for (Inscripcion materia : is.ObtenerInscripcionesPorAlumno(id)) {
+            modelo.addRow(new Object []{materia.getIdIncripcion(), materia.getMateria(),materia.getNota() });
+        }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un número válido");
         }
