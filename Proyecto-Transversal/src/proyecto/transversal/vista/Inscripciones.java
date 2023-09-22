@@ -248,7 +248,7 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
                 modelo.addRow(new Object[]{ins.getIdMateria(), ins.getNombre(), ins.getAnioMateria()});
             }
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null,"Udted no ha seleccionado una materia");
+            JOptionPane.showMessageDialog(null,"Usted no ha seleccionado una materia");
         }
     }//GEN-LAST:event_InscribirActionPerformed
 
@@ -271,7 +271,7 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
                 modelo.addRow(new Object[]{ins.getIdMateria(), ins.getNombre(), ins.getAnioMateria()});
             }
        }catch(Exception ex){
-           JOptionPane.showMessageDialog(null, "Udted no ha seleccionado una materia");
+           JOptionPane.showMessageDialog(null, "Usted no ha seleccionado una materia");
        }
         
     }//GEN-LAST:event_AnularInscripcionActionPerformed
