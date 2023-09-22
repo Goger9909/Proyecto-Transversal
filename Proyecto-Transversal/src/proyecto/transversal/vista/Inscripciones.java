@@ -231,26 +231,24 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
         try{
         MateriaData md = new MateriaData();
         Alumno alumno = (Alumno) jCBAlumno.getSelectedItem();
-        int id = 0;
-        //Para obtener los índices de fila y columna seleccionada.
-        int[] selectedRows = jTable.getSelectedRows();
-        int[] selectedColumns = jTable.getSelectedColumns();
-
-        if (selectedRows.length > 0 && selectedColumns.length > 0) {
-            int filaSeleccionada = selectedRows[0];
-            int columnaSeleccionada = selectedColumns[0];
-        //verificamos que haya al menos una fila y una columna seleccionadas antes de intentar acceder a los valores de la tabla.
-            if (filaSeleccionada < jTable.getRowCount() && columnaSeleccionada < jTable.getColumnCount()) {
-                int valor = (int) jTable.getValueAt(filaSeleccionada, columnaSeleccionada);//accedemos al valor de la primera fila y la primera columna seleccionada.
-                id = valor;//asignamos el valor a la variable.
-            }
-        }
+        //Para obtener los índices de fila.
+        int selectedRows =  jTable.getSelectedRow();
+        //int[] selectedColumns = jTable.getSelectedColumns();
+//      if (selectedRows.length > 0 && selectedColumns.length > 0) {
+//      int filaSeleccionada = selectedRows[0];
+//      int columnaSeleccionada = selectedColumns[0];
+//      if (filaSeleccionada < jTable.getRowCount() && columnaSeleccionada < jTable.getColumnCount()) {
+        int id = (int) jTable.getValueAt(selectedRows, 0);//accedemos al valor de la primera fila y la primera columna seleccionada.
         Materia materia = md.buscarMateria(id);
-        Inscripcion ins = new Inscripcion(alumno, materia, 0); //le pasamos por parametro una nota 0; 
+        Inscripcion insci = new Inscripcion(alumno, materia, 0); //le pasamos por parametro una nota 0; 
         InscripcionData insc = new InscripcionData();
-        insc.GuardarInscripcion(ins);
+        insc.GuardarInscripcion(insci);
+         BorrarFilas();
+         for (Materia ins : insc.ObtenerMateriasNoCursadas(alumno.getIdAlumno())) {
+                modelo.addRow(new Object[]{ins.getIdMateria(), ins.getNombre(), ins.getAnioMateria()});
+            }
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "Error en los datos");
+            JOptionPane.showMessageDialog(null,"Udted no ha seleccionado una materia");
         }
     }//GEN-LAST:event_InscribirActionPerformed
 
@@ -258,24 +256,22 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
        try {
         Alumno alumno = (Alumno) jCBAlumno.getSelectedItem();
         int idA = alumno.getIdAlumno();
-        int idM = 0;
-       //Para obtener los índices de fila y columna seleccionada.
-        int[] selectedRows = jTable.getSelectedRows();
-        int[] selectedColumns = jTable.getSelectedColumns();
-
-        if (selectedRows.length > 0 && selectedColumns.length > 0) {
-            int filaSeleccionada = selectedRows[0];
-            int columnaSeleccionada = selectedColumns[0];
-
-            if (filaSeleccionada < jTable.getRowCount() && columnaSeleccionada < jTable.getColumnCount()) {
-                int valor = (int) jTable.getValueAt(filaSeleccionada, columnaSeleccionada);
-                idM = valor;
-            }
-        }
+       //Para obtener los índices de fila.
+        int  filaSeleccionada = jTable.getSelectedRow();
+//        int[] selectedColumns = jTable.getSelectedColumns();
+//        if (selectedRows.length > 0 && selectedColumns.length > 0) {
+//        int filaSeleccionada = selectedRows[0];
+//        int columnaSeleccionada = selectedColumns[0];
+//        if (filaSeleccionada < jTable.getRowCount() && columnaSeleccionada < jTable.getColumnCount()) {
+          int idM = (int) jTable.getValueAt(filaSeleccionada,0);
         InscripcionData insc = new InscripcionData();
         insc.BorrarInscripcionMateriaAlumno(idA, idM); //Eliminamos una Inscripcion 
+        BorrarFilas();
+            for (Materia ins : insc.ObtenerMateriasCursadas(idA)) {
+                modelo.addRow(new Object[]{ins.getIdMateria(), ins.getNombre(), ins.getAnioMateria()});
+            }
        }catch(Exception ex){
-           JOptionPane.showMessageDialog(null, "Error en los datos");
+           JOptionPane.showMessageDialog(null, "Udted no ha seleccionado una materia");
        }
         
     }//GEN-LAST:event_AnularInscripcionActionPerformed
