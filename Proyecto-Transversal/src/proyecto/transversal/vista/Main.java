@@ -1,5 +1,6 @@
 package proyecto.transversal.vista;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class Main extends javax.swing.JFrame {
@@ -160,6 +161,7 @@ public class Main extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         Inscripciones ins = new Inscripciones(); 
         ins.setVisible(true);
+        ins.getContentPane().setBackground(new Color (0,102,255));
         jEscritorio.add(ins);
         jEscritorio.moveToFront(ins);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
