@@ -3,7 +3,9 @@ package proyecto.transversal.vista;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import proyecto.transversal.accesoADatos.AlumnoData;
 import proyecto.transversal.entidades.Alumno;
 
@@ -184,41 +186,72 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jSalirActionPerformed
 
     private void jGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarActionPerformed
-        if(modificar==false){
-            int dni = Integer.parseInt(jtDNI.getText());
-            String apellido = jtApellido.getText();
-            String nombre = jtNombre.getText();
-            java.util.Date fechaNacimientoUtil = jtFechaNac.getDate();
-            Instant instant = fechaNacimientoUtil.toInstant();
-            LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
-            boolean activo = jtEstado.isSelected();
+        try {
+            //corrobora que todos los campos estan llenos
+            if (jtDNI.getText().isEmpty() || jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() || jtEstado.isSelected() == false || jtFechaNac.getDate() == null) {
+                JOptionPane.showMessageDialog(this, "Todos los campo deben estar llenos");
+            } else {
+                if (modificar == false) {
+                    int dni = Integer.parseInt(jtDNI.getText());
+                    String apellido = jtApellido.getText().trim().substring(0, 1).toUpperCase() + jtApellido.getText().trim().substring(1);
+                    String nombre = jtNombre.getText().trim().substring(0, 1).toUpperCase() + jtNombre.getText().trim().substring(1);
+                    java.util.Date fechaNacimientoUtil = jtFechaNac.getDate();
+                    Instant instant = fechaNacimientoUtil.toInstant();
+                    LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+                    Date fecha = new Date();
+                    LocalDate fechaHoy = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    long diferenciaAn = ChronoUnit.YEARS.between(fechaNac, fechaHoy);
+                    boolean activo = jtEstado.isSelected();
+                    //<<<<<<<compueba si el DNI esta repetido>>>>>>>>>>//
+                    boolean bus = false;
+                    for (Alumno busqueda : ad.listaAlumnos()) {
+                        int dniComprobacion = busqueda.getDni();
+                        if (dniComprobacion == dni) {
+                            JOptionPane.showMessageDialog(null, "DNI repetido");
+                            bus = true;
+                        }
+                    }
+                    if (bus == false && diferenciaAn >= 17) {
+                        // Crear una instancia de Persona
+                        Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, activo);
+                        // Agregar la persona a la AlumnoData
+                        ad.agregarAlumno(alumno);
+                        jtDNI.setText("");
+                        jtApellido.setText("");
+                        jtNombre.setText("");
+                        jtFechaNac.setDate(null);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Debe ser mayor de 17 años");
+                    }
 
-            // Crear una instancia de Persona
-            Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, activo);
-            // Agregar la persona a la AlumnoData
-            ad.agregarAlumno(alumno);
-        }else{
-            int dni = Integer.parseInt(jtDNI.getText());
-            String apellido = jtApellido.getText();
-            String nombre = jtNombre.getText();
+                } else {
+                    int dni = Integer.parseInt(jtDNI.getText());
+                    String apellido = jtApellido.getText();
+                    String nombre = jtNombre.getText();
 
-            java.util.Date fechaNacimientoUtil = jtFechaNac.getDate();
-            Instant instant = fechaNacimientoUtil.toInstant();
-            LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
-            boolean activo = jtEstado.isSelected();
+                    java.util.Date fechaNacimientoUtil = jtFechaNac.getDate();
+                    Instant instant = fechaNacimientoUtil.toInstant();
+                    LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+                    boolean activo = jtEstado.isSelected();
 
-            // Crear una instancia de Alumno
-            Alumno alumno = new Alumno(id,dni, apellido, nombre, fechaNac, activo);
-            // Agregar un alumno a AlumnoData
-            ad.modificarAlumno(alumno);
-            modificar=false;
+                    // Crear una instancia de Alumno
+                    Alumno alumno = new Alumno(id, dni, apellido, nombre, fechaNac, activo);
+                    // Agregar un alumno a AlumnoData
+                    ad.modificarAlumno(alumno);
+                    modificar = false;
+                      //Borramos los valores y limpiamos la tabla
+                jtDNI.setText("");
+                jtApellido.setText("");
+                jtNombre.setText("");
+                jtFechaNac.setDate(null);
+                jtEstado.setSelected(false);
+                }
+              
+            }
+        } catch (NumberFormatException | NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Algunos de los campos fueron mal ingresados");
         }
-        //Borramos los valores y limpiamos la tabla
-        jtDNI.setText("");
-        jtApellido.setText("");
-        jtNombre.setText("");
-        jtFechaNac.setDate(null);
-        jtEstado.setSelected(false);
+
     }//GEN-LAST:event_jGuardarActionPerformed
 
     private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
@@ -242,16 +275,18 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
 
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
         int dni = Integer.parseInt(jtDNI.getText());
-        Alumno alumno=ad.buscarAlumnoPorDni(dni);
-        id=alumno.getIdAlumno();
-        String apellido=alumno.getApellido();
-        String nombre=alumno.getNombre();
-        LocalDate fechaNac=alumno.getFechaNac();
+        Alumno alumno = ad.buscarAlumnoPorDni(dni);
+        id = alumno.getIdAlumno();
+        String apellido = alumno.getApellido();
+        String nombre = alumno.getNombre();
+        LocalDate fechaNac = alumno.getFechaNac();
         Date fechaNacimiento;
         if (fechaNac != null) {
             fechaNacimiento = Date.from(fechaNac.atStartOfDay(ZoneId.systemDefault()).toInstant());
             // Continuar con el código
-        } else {fechaNacimiento=(null);}
+        } else {
+            fechaNacimiento = (null);
+        }
         //Rellenamos tabla, con los valores de la base de datos
         jtApellido.setText(apellido);
         jtNombre.setText(nombre);
@@ -262,10 +297,10 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBuscarActionPerformed
     //Instanciamos la clase AlumnoData como ad
     AlumnoData ad = new AlumnoData();
-    
-    private boolean modificar=false;
+
+    private boolean modificar = false;
     int id;
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Apellido;

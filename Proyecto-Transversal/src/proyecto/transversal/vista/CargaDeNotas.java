@@ -194,13 +194,14 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                 Alumno al = (Alumno) jcAlumnos.getSelectedItem();
                 int id = al.getIdAlumno();
                 InscripcionData is = new InscripcionData();
-
                 ArrayList<Inscripcion> inscripciones = (ArrayList<Inscripcion>) is.ObtenerInscripcionesPorAlumno(id);
-
                 Inscripcion inscripcion = inscripciones.get(filaSeleccionada);
                 idm = inscripcion.getMateria().getIdMateria();
-
+                if(nota<=10){
                 is.ActualizarNota(id, idm, nota);
+                }else{
+                    JOptionPane.showMessageDialog(null, "La nota no puede ser superior a 10 ni menor de 0");
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "No seleciono ninguna materia.");
             }
