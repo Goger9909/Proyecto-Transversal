@@ -193,8 +193,8 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
             } else {
                 if (modificar == false) {
                     int dni = Integer.parseInt(jtDNI.getText());
-                    String apellido = jtApellido.getText().trim().substring(0, 1).toUpperCase() + jtApellido.getText().trim().substring(1);
-                    String nombre = jtNombre.getText().trim().substring(0, 1).toUpperCase() + jtNombre.getText().trim().substring(1);
+                    String apellido = jtApellido.getText().trim().substring(0, 1).toUpperCase() + jtApellido.getText().trim().substring(1).toLowerCase();
+                    String nombre = jtNombre.getText().trim().substring(0, 1).toUpperCase() + jtNombre.getText().trim().substring(1).toLowerCase();
                     java.util.Date fechaNacimientoUtil = jtFechaNac.getDate();
                     Instant instant = fechaNacimientoUtil.toInstant();
                     LocalDate fechaNac = instant.atZone(ZoneId.systemDefault()).toLocalDate();
