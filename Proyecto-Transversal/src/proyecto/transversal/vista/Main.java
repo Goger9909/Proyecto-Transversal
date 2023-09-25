@@ -1,7 +1,5 @@
 package proyecto.transversal.vista;
 
-import java.awt.*;
-import javax.swing.*;
 import javax.swing.JOptionPane;
 
 public class Main extends javax.swing.JFrame {
@@ -9,7 +7,6 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         this.setLocationRelativeTo(null);
-       
     }
 
     @SuppressWarnings("unchecked")
@@ -17,8 +14,7 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
-        jEscritorio = new javax.swing.JDesktopPane(){
-        };
+        jEscritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jFormularioAlumno = new javax.swing.JMenuItem();
@@ -36,17 +32,17 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jEscritorio.setPreferredSize(new java.awt.Dimension(1080, 1080));
+        jEscritorio.setPreferredSize(new java.awt.Dimension(900, 800));
 
         javax.swing.GroupLayout jEscritorioLayout = new javax.swing.GroupLayout(jEscritorio);
         jEscritorio.setLayout(jEscritorioLayout);
         jEscritorioLayout.setHorizontalGroup(
             jEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
         jEscritorioLayout.setVerticalGroup(
             jEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Alumno");
@@ -142,7 +138,6 @@ public class Main extends javax.swing.JFrame {
     
     private void jFormularioAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormularioAlumnoActionPerformed
         Gestión_de_Alumnos GA = new Gestión_de_Alumnos();
-        GA.getContentPane().setBackground(new Color(0,102 ,255));
         GA.setVisible(true);
         jEscritorio.add(GA);
         jEscritorio.moveToFront(GA);
@@ -150,7 +145,6 @@ public class Main extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         Consulta_de_alumno_por_Materia GA = new Consulta_de_alumno_por_Materia();
-        GA.getContentPane().setBackground(new Color(0,102 ,255));
         GA.setVisible(true);
         jEscritorio.add(GA);
         jEscritorio.moveToFront(GA);
@@ -159,7 +153,6 @@ public class Main extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         Vista_Materia GA = new Vista_Materia();
         GA.setVisible(true);
-        GA.getContentPane().setBackground(new Color(0,102 ,255));
         jEscritorio.add(GA);
         jEscritorio.moveToFront(GA);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -167,10 +160,8 @@ public class Main extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         Inscripciones ins = new Inscripciones(); 
         ins.setVisible(true);
-        ins.getContentPane().setBackground(new Color(0,102 ,255));
         jEscritorio.add(ins);
         jEscritorio.moveToFront(ins);
-        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
@@ -189,7 +180,6 @@ public class Main extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         CargaDeNotas ins = new CargaDeNotas(); 
-        ins.getContentPane().setBackground(new Color(0,102 ,255));
         ins.setVisible(true);
         jEscritorio.add(ins);
         jEscritorio.moveToFront(ins);
@@ -222,7 +212,6 @@ public class Main extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
                 new Main().setVisible(true);
             }
