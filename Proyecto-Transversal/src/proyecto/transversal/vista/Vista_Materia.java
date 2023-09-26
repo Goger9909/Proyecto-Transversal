@@ -346,7 +346,8 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
             MateriaData mD = new MateriaData();
             String nombreMateria;
             boolean re = false;
-            for (Materia bus : mD.listarMaterias()) {
+            // en este caso llamamos al listado nuevo de BuscarTodasMaterias() para ver las eliminadas que coinciten en nombre para dar opcion de activarlas nuevamente...
+            for (Materia bus : mD.listarTodasMaterias()) {
                 nombreMateria = bus.getNombre();
                 
                 if (nombreMateria.equalsIgnoreCase(nombre)) {

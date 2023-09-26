@@ -150,31 +150,31 @@ public class MateriaData {
     
 
         
-//    public List<Materia> listarTodasMaterias(){
-//        
-//        String sql = "SELECT idMateria, nombre, año, estado FROM materia";
-//        ArrayList<Materia> materias=new ArrayList<>();
-//            
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            
-//            ResultSet rs= ps.executeQuery();
-//            while(rs.next()){
-//                
-//                Materia materia = new Materia();
-//                materia.setIdMateria(rs.getInt("idMateria"));
-//                materia.setNombre(rs.getString("nombre"));
-//                materia.setAnioMateria(rs.getInt("año"));
-//                materia.setActivo(rs.getBoolean("estado"));
-//                
-//                materias.add(materia);
-//            }
-//            ps.close();
-//        } catch (SQLException ex) {
-//           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
-//        }
-//           return materias;        
-//    }    
+    public List<Materia> listarTodasMaterias(){
+        
+        String sql = "SELECT idMateria, nombre, año, estado FROM materia";
+        ArrayList<Materia> materias=new ArrayList<>();
+            
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ResultSet rs= ps.executeQuery();
+            while(rs.next()){
+                
+                Materia materia = new Materia();
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnioMateria(rs.getInt("año"));
+                materia.setActivo(rs.getBoolean("estado"));
+                
+                materias.add(materia);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
+        }
+           return materias;        
+    }    
 //
  
     
