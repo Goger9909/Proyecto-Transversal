@@ -307,7 +307,6 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
                 decision = true;
             }
         } catch (NullPointerException | NumberFormatException ex) {
-//            JOptionPane.showMessageDialog(null, "ID null o fuera de rango");
             decision = false;
         }
         
@@ -330,9 +329,9 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
 
                 JOptionPane.showMessageDialog(null, "No debe haber campos vacios");
             } 
-
+// PARA GUARDAR UNA MATERIA NUEVA
         } else if (decision == false) {
-            // PARA GUARDAR MATERIA
+            boolean re = false;
             try{
             nombre = jtfNombre.getText();
             anioMat = Integer.parseInt(jtfAnio.getText());
@@ -340,12 +339,11 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Complete los campos correctamente");
                 nombre="";
                 anioMat=0;
-                
+                re = true;
             }
             activo = jrbEstado.isSelected();
             MateriaData mD = new MateriaData();
             String nombreMateria;
-            boolean re = false;
             // en este caso llamamos al listado nuevo de BuscarTodasMaterias() para ver las eliminadas que coinciten en nombre para dar opcion de activarlas nuevamente...
             for (Materia bus : mD.listarTodasMaterias()) {
                 nombreMateria = bus.getNombre();
@@ -356,15 +354,15 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
                     re = true;
                 }
             }
-            if (re == false && (nombre!="" | anioMat!=0) ) {
-                Materia mat = new Materia(nombre, anioMat, activo);
-                md.guardarMateria(mat);
-            }
-//            System.out.println(""+nombre+"-"+anioMat+"-"+activo);
-
+            if (re == false) { 
+                if(nombre.equals("")){
+                    JOptionPane.showMessageDialog(null,"Debe ingresar un nombre");
+                } else {
+                    Materia mat = new Materia(nombre, anioMat, activo);
+                    md.guardarMateria(mat);
+                }
+            }          
         }
-
-
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
