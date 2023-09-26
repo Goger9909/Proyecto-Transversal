@@ -20,7 +20,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
      */
     public Vista_Materia() {
         initComponents();
-//        jbNuevo.setEnabled(false);
+
         jbEliminar.setEnabled(false);
         jbGuardar.setEnabled(false);
         jtfNombre.setEnabled(false);
@@ -133,29 +133,30 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
                         .addComponent(jbBuscar))
                     .addGroup(jpVistaMateriaLayout.createSequentialGroup()
                         .addGap(106, 106, 106)
-                        .addComponent(jlNombre)
-                        .addGap(31, 31, 31)
-                        .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpVistaMateriaLayout.createSequentialGroup()
-                        .addGap(106, 106, 106)
                         .addComponent(jlAnio)
                         .addGap(53, 53, 53)
                         .addComponent(jtfAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpVistaMateriaLayout.createSequentialGroup()
                         .addGap(106, 106, 106)
-                        .addComponent(jlEstado)
-                        .addGap(36, 36, 36)
-                        .addComponent(jrbEstado))
-                    .addGroup(jpVistaMateriaLayout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(jbGuardar)
-                        .addGap(53, 53, 53)
-                        .addComponent(jbEliminar)
-                        .addGap(51, 51, 51)
-                        .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(107, Short.MAX_VALUE))
+                        .addGroup(jpVistaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jpVistaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jpVistaMateriaLayout.createSequentialGroup()
+                                    .addComponent(jlEstado)
+                                    .addGap(36, 36, 36)
+                                    .addComponent(jrbEstado))
+                                .addGroup(jpVistaMateriaLayout.createSequentialGroup()
+                                    .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(45, 45, 45)
+                                    .addComponent(jbGuardar)
+                                    .addGap(54, 54, 54)
+                                    .addComponent(jbEliminar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jpVistaMateriaLayout.createSequentialGroup()
+                                .addComponent(jlNombre)
+                                .addGap(31, 31, 31)
+                                .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(107, 107, 107))
         );
         jpVistaMateriaLayout.setVerticalGroup(
             jpVistaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,13 +192,13 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
                         .addGap(6, 6, 6)
                         .addComponent(jlEstado))
                     .addComponent(jrbEstado))
-                .addGap(116, 116, 116)
-                .addGroup(jpVistaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(43, 43, 43)
+                .addGroup(jpVistaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbGuardar)
                     .addComponent(jbEliminar)
                     .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,7 +209,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpVistaMateria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpVistaMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -301,33 +302,29 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        // PARA GUARDAR MATERIA
+        boolean decision = false;
         try {
             id = Integer.parseInt(jtfCodigo.getText());
-            
-        } catch (NullPointerException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "PROBANDO A VER SI PASA");
-            boolean decision = false;
-        }
-            boolean decision = false;
-        try {
-            if (md.buscarMateria(id).getIdMateria() == id) {
+            if (id == md.buscarMateria(id).getIdMateria()) {
                 decision = true;
             }
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "Se agragara como materia nueva");
+        } catch (NullPointerException | NumberFormatException ex) {
+//            JOptionPane.showMessageDialog(null, "ID null o fuera de rango");
             decision = false;
         }
+//            boolean decision = false;
+//        try {
+//            
+//        } catch (NullPointerException ex) {
+//            JOptionPane.showMessageDialog(null, "Como esta nulo el ID desicion = false lin 319");
+//            decision = false;
+//        }
         if (decision == true) {
             //PARA EDITAR LA MATERIA CORRECTAMENTE
-
-            System.out.println("entra a la parte de editar");
-            JOptionPane.showMessageDialog(null, "Entra a Editar (1)");
             try {
                 nombre = jtfNombre.getText();
                 anioMat = Integer.parseInt(jtfAnio.getText());
                 activo = jrbEstado.isSelected();
-                System.out.println(id + "-" + nombre + "-" + anioMat + "-" + activo);
                 Materia mat = new Materia(id, nombre, anioMat, activo);
                 md.modificarMateria(mat);
 
@@ -339,18 +336,22 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
             } catch (NullPointerException ex) {
 
                 JOptionPane.showMessageDialog(null, "No debe haber campos vacios");
-            }
+            } 
 
         } else if (decision == false) {
-
-            //System.out.println("entro a guardar Materia");
-            //JOptionPane.showMessageDialog(null, "Entra a GUARDAR (2)");
+            // PARA GUARDAR MATERIA
+            try{
             nombre = jtfNombre.getText();
             anioMat = Integer.parseInt(jtfAnio.getText());
-//            System.out.println(""+jrbEstado.isSelected());
+            }catch(NullPointerException | NumberFormatException ex){
+                JOptionPane.showMessageDialog(null, "Complete los campos correctamente");
+                nombre="";
+                anioMat=0;
+                
+            }
             activo = jrbEstado.isSelected();
             MateriaData mD = new MateriaData();
-            String nombreMateria = null;
+            String nombreMateria;
             boolean re = false;
             for (Materia bus : mD.listarMaterias()) {
                 nombreMateria = bus.getNombre();
@@ -359,7 +360,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
                     re = true;
                 }
             }
-            if (re == false) {
+            if (re == false && (nombre!="" | anioMat!=0) ) {
                 Materia mat = new Materia(nombre, anioMat, activo);
                 md.guardarMateria(mat);
             }

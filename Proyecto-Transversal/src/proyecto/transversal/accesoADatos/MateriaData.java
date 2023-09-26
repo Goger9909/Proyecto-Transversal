@@ -54,7 +54,6 @@ public class MateriaData {
             String sql = "UPDATE materia SET nombre= ? , año= ? , estado = ? "
                         +" WHERE idMateria = ? ";
             
-//            UPDATE materia SET nombre = 'Psicologia', año = 2 , estado = true WHERE idMateria = 16;
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
