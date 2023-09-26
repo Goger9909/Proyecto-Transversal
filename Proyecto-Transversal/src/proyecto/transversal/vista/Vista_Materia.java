@@ -75,6 +75,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
         jlEstado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlEstado.setText("Estado:");
 
+        jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Buscar.jpg"))); // NOI18N
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +83,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
             }
         });
 
+        jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/alumnoo.jpg"))); // NOI18N
         jbNuevo.setText("Nuevo");
         jbNuevo.setMaximumSize(new java.awt.Dimension(79, 25));
         jbNuevo.setMinimumSize(new java.awt.Dimension(79, 25));
@@ -91,6 +93,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
             }
         });
 
+        jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.jpg"))); // NOI18N
         jbEliminar.setText("Eliminar");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +101,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
             }
         });
 
+        jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar.jpg"))); // NOI18N
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +109,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
             }
         });
 
+        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.jpg"))); // NOI18N
         jbSalir.setText("Salir");
         jbSalir.setMaximumSize(new java.awt.Dimension(79, 25));
         jbSalir.setMinimumSize(new java.awt.Dimension(79, 25));
@@ -130,31 +135,32 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
                         .addGap(19, 19, 19)
                         .addGroup(jpVistaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpVistaMateriaLayout.createSequentialGroup()
-                                .addComponent(jlNombre)
-                                .addGap(28, 28, 28)
-                                .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpVistaMateriaLayout.createSequentialGroup()
-                                .addGroup(jpVistaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlCodigo)
-                                    .addComponent(jlAnio)
-                                    .addComponent(jlEstado))
-                                .addGap(40, 40, 40)
-                                .addGroup(jpVistaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jpVistaMateriaLayout.createSequentialGroup()
-                                        .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(85, 85, 85)
-                                        .addComponent(jbBuscar))
-                                    .addComponent(jrbEstado)))
-                            .addGroup(jpVistaMateriaLayout.createSequentialGroup()
                                 .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
+                                .addGap(18, 18, 18)
                                 .addComponent(jbGuardar)
-                                .addGap(38, 38, 38)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jbEliminar)
-                                .addGap(33, 33, 33)
-                                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(215, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpVistaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jpVistaMateriaLayout.createSequentialGroup()
+                                    .addComponent(jlNombre)
+                                    .addGap(28, 28, 28)
+                                    .addComponent(jtfNombre))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpVistaMateriaLayout.createSequentialGroup()
+                                    .addGroup(jpVistaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jlCodigo)
+                                        .addComponent(jlAnio)
+                                        .addComponent(jlEstado))
+                                    .addGap(40, 40, 40)
+                                    .addGroup(jpVistaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jtfAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jpVistaMateriaLayout.createSequentialGroup()
+                                            .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(85, 85, 85)
+                                            .addComponent(jbBuscar))
+                                        .addComponent(jrbEstado)))))))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
         jpVistaMateriaLayout.setVerticalGroup(
             jpVistaMateriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,7 +199,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
                     .addComponent(jbGuardar)
                     .addComponent(jbEliminar)
                     .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
