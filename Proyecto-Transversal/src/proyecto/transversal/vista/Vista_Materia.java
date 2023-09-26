@@ -267,8 +267,8 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
 
 //            modificar=true;
         } catch (NullPointerException ex) {
-            // no la manejo aqui, ya que el mismo metodo de "buscarMateria(int id)" en MateriaData me tira el mensaje...
-//            JOptionPane.showMessageDialog(this, "");
+      // no la manejo aqui con JOP, ya que el mismo metodo de "buscarMateria(int id)" en MateriaData me tira el mensaje...
+
             jtfNombre.setText(null);
             jtfAnio.setText(null);
             jrbEstado.setSelected(false);
@@ -279,11 +279,9 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
             jrbEstado.setEnabled(false);
             jbEliminar.setEnabled(false);
             jbGuardar.setEnabled(false);
-//            jbEliminar.setEnabled(false);
-
-//            modificar=false;   
+  
         } catch (NumberFormatException ex) {
-            // en caso de que el usuario deje el ID vacio
+            // en caso de que el usuario ingrese letras
             JOptionPane.showMessageDialog(null, "El campo solo acepta numeros");
             jtfNombre.setText(null);
             jtfAnio.setText(null);
@@ -312,15 +310,10 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
 //            JOptionPane.showMessageDialog(null, "ID null o fuera de rango");
             decision = false;
         }
-//            boolean decision = false;
-//        try {
-//            
-//        } catch (NullPointerException ex) {
-//            JOptionPane.showMessageDialog(null, "Como esta nulo el ID desicion = false lin 319");
-//            decision = false;
-//        }
+        
+//PARA EDITAR LA MATERIA CORRECTAMENTE
         if (decision == true) {
-            //PARA EDITAR LA MATERIA CORRECTAMENTE
+            
             try {
                 nombre = jtfNombre.getText();
                 anioMat = Integer.parseInt(jtfAnio.getText());
@@ -355,8 +348,10 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
             boolean re = false;
             for (Materia bus : mD.listarMaterias()) {
                 nombreMateria = bus.getNombre();
+                
                 if (nombreMateria.equalsIgnoreCase(nombre)) {
-                    JOptionPane.showMessageDialog(null, "Materia repetida");
+                    int idmat = bus.getIdMateria();
+                    JOptionPane.showMessageDialog(null, "Materia repetida, ID: "+idmat);
                     re = true;
                 }
             }
@@ -382,10 +377,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
         if (activo == true) {
             md.eliminarMateria(id);
             jrbEstado.isSelected();
-        } else {
-
         }
-
 //        }catch (NullPointerException ex){
 //        JOptionPane.showMessageDialog(null, "Debe Seleccionar una materia para eliminar");
 //        }
