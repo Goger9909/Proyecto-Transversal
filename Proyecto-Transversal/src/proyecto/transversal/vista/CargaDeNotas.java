@@ -71,7 +71,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(Tabla);
 
         jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar.jpg"))); // NOI18N
-        jbGuardar.setText("Guardar");
+        jbGuardar.setText("Modificar nota");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
@@ -110,7 +110,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(156, 156, 156)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
