@@ -53,14 +53,16 @@ public class Main extends javax.swing.JFrame {
         );
         jEscritorioLayout.setVerticalGroup(
             jEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 792, Short.MAX_VALUE)
         );
 
         jMenuBar1.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
 
         jMenu1.setText("Alumno");
+        jMenu1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
-        jFormularioAlumno.setText("Formulario ALumno");
+        jFormularioAlumno.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jFormularioAlumno.setText("Formulario Alumno");
         jFormularioAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFormularioAlumnoActionPerformed(evt);
@@ -71,7 +73,9 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Materia");
+        jMenu2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
+        jMenuItem2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jMenuItem2.setText("Formulario Materia");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +87,9 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Administracion");
+        jMenu3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
+        jMenuItem3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jMenuItem3.setText("Manejo de Inscripciones");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +98,7 @@ public class Main extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem3);
 
+        jMenuItem4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jMenuItem4.setText("Manipulacion de Notas");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +110,9 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Consultas");
+        jMenu4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
+        jMenuItem5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jMenuItem5.setText("Alumnos por Materia");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,12 +124,14 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Salir");
+        jMenu5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jMenu5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu5ActionPerformed(evt);
             }
         });
 
+        jMenuItem6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jMenuItem6.setText("Salir");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +152,7 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
         );
 
         pack();
