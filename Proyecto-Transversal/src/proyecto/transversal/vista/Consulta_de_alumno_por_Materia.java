@@ -29,6 +29,7 @@ public class Consulta_de_alumno_por_Materia extends javax.swing.JInternalFrame {
         initComponents();
         cargarCombo();
         armarTabla();
+        this.setSize(487, 455);
         
     }
 
@@ -58,10 +59,10 @@ public class Consulta_de_alumno_por_Materia extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(479, 354));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Listado de alumno por Materia");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 270, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 14, 270, -1));
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +70,7 @@ public class Consulta_de_alumno_por_Materia extends javax.swing.JInternalFrame {
                 jbSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 254, -1, -1));
+        jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 386, -1, -1));
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,18 +86,18 @@ public class Consulta_de_alumno_por_Materia extends javax.swing.JInternalFrame {
         Tabla.setGridColor(new java.awt.Color(255, 51, 255));
         jScrollPane1.setViewportView(Tabla);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 104, 410, 110));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 119, 470, 258));
 
         jcSelecMateria.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcSelecMateriaItemStateChanged(evt);
             }
         });
-        jPanel1.add(jcSelecMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 160, -1));
+        jPanel1.add(jcSelecMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 212, -1));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Selecionar una materia");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 190, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 84, 190, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,7 +107,7 @@ public class Consulta_de_alumno_por_Materia extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
         );
 
         pack();
