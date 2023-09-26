@@ -71,11 +71,6 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
                 jCBAlumnoItemStateChanged(evt);
             }
         });
-        jCBAlumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBAlumnoActionPerformed(evt);
-            }
-        });
         jPanel1.add(jCBAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 240, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -210,13 +205,8 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
         MateriaData md = new MateriaData();
         Alumno alumno = (Alumno) jCBAlumno.getSelectedItem();
         //Para obtener los índices de fila.
-        int selectedRows =  jTable.getSelectedRow();
-        //int[] selectedColumns = jTable.getSelectedColumns();
-//      if (selectedRows.length > 0 && selectedColumns.length > 0) {
-//      int filaSeleccionada = selectedRows[0];
-//      int columnaSeleccionada = selectedColumns[0];
-//      if (filaSeleccionada < jTable.getRowCount() && columnaSeleccionada < jTable.getColumnCount()) {
-        int id = (int) jTable.getValueAt(selectedRows, 0);//accedemos al valor de la primera fila y la primera columna seleccionada.
+        int filaSeleccionada  =  jTable.getSelectedRow();
+        int id = (int) jTable.getValueAt(filaSeleccionada , 0);//accedemos al valor de la primera fila y la primera columna seleccionada.
         Materia materia = md.buscarMateria(id);
         Inscripcion insci = new Inscripcion(alumno, materia, 0); //le pasamos por parametro una nota 0; 
         InscripcionData insc = new InscripcionData();
@@ -236,12 +226,7 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
         int idA = alumno.getIdAlumno();
        //Para obtener los índices de fila.
         int  filaSeleccionada = jTable.getSelectedRow();
-//        int[] selectedColumns = jTable.getSelectedColumns();
-//        if (selectedRows.length > 0 && selectedColumns.length > 0) {
-//        int filaSeleccionada = selectedRows[0];
-//        int columnaSeleccionada = selectedColumns[0];
-//        if (filaSeleccionada < jTable.getRowCount() && columnaSeleccionada < jTable.getColumnCount()) {
-          int idM = (int) jTable.getValueAt(filaSeleccionada,0);
+        int idM = (int) jTable.getValueAt(filaSeleccionada,0);
         InscripcionData insc = new InscripcionData();
         insc.BorrarInscripcionMateriaAlumno(idA, idM); //Eliminamos una Inscripcion 
         BorrarFilas();
@@ -251,12 +236,7 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
        }catch(Exception ex){
            JOptionPane.showMessageDialog(null, "Usted no ha seleccionado una materia");
        }
-        
     }//GEN-LAST:event_AnularInscripcionActionPerformed
-
-    private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBAlumnoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
