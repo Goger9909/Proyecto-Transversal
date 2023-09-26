@@ -178,8 +178,8 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
 
                 } else {
                     int dni = Integer.parseInt(jtDNI.getText());
-                    String apellido = jtApellido.getText();
-                    String nombre = jtNombre.getText();
+                    String apellido = jtApellido.getText().trim().substring(0, 1).toUpperCase() + jtApellido.getText().trim().substring(1).toLowerCase();
+                    String nombre = jtNombre.getText().trim().substring(0, 1).toUpperCase() + jtNombre.getText().trim().substring(1).toLowerCase();
 
                     java.util.Date fechaNacimientoUtil = jtFechaNac.getDate();
                     Instant instant = fechaNacimientoUtil.toInstant();
@@ -226,7 +226,8 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jNuevoActionPerformed
 
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
-        int dni = Integer.parseInt(jtDNI.getText());
+        try {
+            int dni = Integer.parseInt(jtDNI.getText());
         Alumno alumno = ad.buscarAlumnoPorDni(dni);
         id = alumno.getIdAlumno();
         String apellido = alumno.getApellido();
@@ -246,6 +247,10 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         jtEstado.setSelected(true);
         //Ponemos en true 'modificar', para especificar en el boton 'eliminar' y en 'guardar' para poder modificar los valores existentes
         modificar = true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Dato mal ingresado");
+        }
+        
     }//GEN-LAST:event_jBuscarActionPerformed
     //Instanciamos la clase AlumnoData como ad
     AlumnoData ad = new AlumnoData();
