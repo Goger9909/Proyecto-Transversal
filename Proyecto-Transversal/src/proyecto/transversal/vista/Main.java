@@ -21,7 +21,7 @@ public class Main extends javax.swing.JFrame {
         Image imagen=icono.getImage();
         jEscritorio = new javax.swing.JDesktopPane(){
 
-            public void paintComponen(Graphics g){
+            public void paintComponent(Graphics g){
                 g.drawImage(imagen,0,0,getWidth(),getHeight(),this);
             }
 
@@ -55,6 +55,8 @@ public class Main extends javax.swing.JFrame {
             jEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 800, Short.MAX_VALUE)
         );
+
+        jMenuBar1.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
 
         jMenu1.setText("Alumno");
 
