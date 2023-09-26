@@ -26,6 +26,7 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
         CargarCombo();
         ArmarCabezera();
         this.setLocation(100,100);
+        this.setSize(487, 455);
     }
 
     @SuppressWarnings("unchecked")
@@ -35,17 +36,19 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         Nombre = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jCBAlumno = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        MateriasInscriptas = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         MateriasNoInscriptas = new javax.swing.JRadioButton();
-        MateriasInscriptas = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
-        Inscribir = new javax.swing.JButton();
-        AnularInscripcion = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        AnularInscripcion = new javax.swing.JButton();
+        Inscribir = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -54,24 +57,30 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(jList1);
 
+        jToggleButton1.setText("jToggleButton1");
+
+        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Formulario de Inscripcion");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 230, 22));
 
         jCBAlumno.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCBAlumnoItemStateChanged(evt);
             }
         });
-
-        jLabel2.setText("Seleccione un alumno:");
-
-        jLabel3.setText(" Listado de Materias");
-
-        MateriasNoInscriptas.setText("Materias no Inscriptas");
-        MateriasNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
+        jCBAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MateriasNoInscriptasActionPerformed(evt);
+                jCBAlumnoActionPerformed(evt);
             }
         });
+        jPanel1.add(jCBAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 240, -1));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setText("Seleccione un alumno:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 200, 26));
 
         MateriasInscriptas.setText("Materias Inscriptas");
         MateriasInscriptas.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +88,19 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
                 MateriasInscriptasActionPerformed(evt);
             }
         });
+        jPanel1.add(MateriasInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 163, 30));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setText(" Listado de Materias");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 150, 28));
+
+        MateriasNoInscriptas.setText("Materias no Inscriptas");
+        MateriasNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MateriasNoInscriptasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(MateriasNoInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, -1, 30));
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,19 +123,7 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
         jTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTable);
 
-        Inscribir.setText("Inscribir");
-        Inscribir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InscribirActionPerformed(evt);
-            }
-        });
-
-        AnularInscripcion.setText("Anular Inscripcion");
-        AnularInscripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AnularInscripcionActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 450, 210));
 
         jButton3.setText("Salir");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -121,67 +131,35 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, -1, -1));
+
+        AnularInscripcion.setText("Anular Inscripcion");
+        AnularInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnularInscripcionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(AnularInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, -1, -1));
+
+        Inscribir.setText("Inscribir");
+        Inscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InscribirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Inscribir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(MateriasInscriptas, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(MateriasNoInscriptas)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(143, 143, 143))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap()))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Inscribir)
-                        .addGap(46, 46, 46)
-                        .addComponent(AnularInscripcion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jCBAlumno)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MateriasNoInscriptas)
-                    .addComponent(MateriasInscriptas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Inscribir)
-                    .addComponent(AnularInscripcion)
-                    .addComponent(jButton3))
-                .addGap(9, 9, 9))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE))
         );
 
         pack();
@@ -276,6 +254,10 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_AnularInscripcionActionPerformed
 
+    private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBAlumnoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AnularInscripcion;
@@ -289,9 +271,11 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jList1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 
  public void CargarCombo(){
