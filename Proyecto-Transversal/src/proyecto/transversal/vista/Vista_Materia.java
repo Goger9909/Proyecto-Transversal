@@ -5,6 +5,8 @@
  */
 package proyecto.transversal.vista;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import proyecto.transversal.accesoADatos.MateriaData;
 import proyecto.transversal.entidades.Materia;
@@ -79,6 +81,12 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBuscarActionPerformed(evt);
+            }
+        });
+
+        jtfCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfCodigoKeyTyped(evt);
             }
         });
 
@@ -219,7 +227,8 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
     boolean activo = false;
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        
+    
+        // Funcionalidad del boton Buscar si esta con el texto "Atras" al clickear realiza la habilitacion de los demas campos
         if(jbBuscar.getText().equals("Atras")){
             jbEliminar.setEnabled(false);
             jbGuardar.setEnabled(false);
@@ -232,7 +241,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
             jtfAnio.setText(null);
             
                        
-        } else {
+        } else {              // Boton Buscar = "Buscar" realiza la busqueda correspondiente
             
         
         try {
@@ -401,6 +410,24 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
         evt.consume();
     }
     }//GEN-LAST:event_jtfNombreKeyTyped
+
+    private void jtfCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCodigoKeyTyped
+        // Condicion Ascii para el Codigo (ID)
+    int key = evt.getKeyChar();
+    boolean numeros = key >= 48 && key <=57;
+    if(!numeros){
+        evt.consume();
+    }
+    jtfCodigo.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyTyped(KeyEvent evt){
+            if(jtfCodigo.getText().length() >= 8){
+                evt.consume();
+            }
+        }
+    });
+    
+    }//GEN-LAST:event_jtfCodigoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
