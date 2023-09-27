@@ -346,7 +346,7 @@ public class Vista_Materia extends javax.swing.JInternalFrame {
                 
                 if (nombreMateria.equalsIgnoreCase(nombre)) {
                     int idmat = bus.getIdMateria();
-                    JOptionPane.showMessageDialog(null, "Materia repetida, ID: "+idmat);
+                    JOptionPane.showMessageDialog(null, "Materia repetida, Codigo: "+idmat);
                     re = true;
                 }
             }
