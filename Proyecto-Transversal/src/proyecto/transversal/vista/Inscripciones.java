@@ -27,6 +27,9 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
         ArmarCabezera();
         this.setLocation(100,100);
         this.setSize(487, 455);
+        MateriasInscriptas.setSelected(true);
+        AnularInscripcion.setEnabled(true);
+        Inscribir.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
