@@ -165,6 +165,19 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
          MateriasInscriptas.setSelected(false);
          AnularInscripcion.setEnabled(false);
          Inscribir.setEnabled(true);
+        
+         try{
+        Alumno alumno = (Alumno) jCBAlumno.getSelectedItem();
+        int idA = alumno.getIdAlumno();
+        InscripcionData insc = new InscripcionData();
+        BorrarFilas();
+            for (Materia ins : insc.ObtenerMateriasNoCursadas(idA)) {
+                modelo.addRow(new Object[]{ins.getIdMateria(), ins.getNombre(), ins.getAnioMateria()});
+            }
+         }catch (NullPointerException ex){
+         JOptionPane.showMessageDialog(null, "Seleccione un alumno");
+         BorrarFilas();
+         }    
     }//GEN-LAST:event_MateriasNoInscriptasActionPerformed
 
     private void jCBAlumnoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBAlumnoItemStateChanged
@@ -185,7 +198,9 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
                 modelo.addRow(new Object[]{ins.getIdMateria(), ins.getNombre(), ins.getAnioMateria()});
             }
         }
-      }catch(Exception ex){
+      }catch(NullPointerException ex){ 
+          JOptionPane.showMessageDialog(null, "Seleccione un alumno");
+          BorrarFilas();
         }
     }//GEN-LAST:event_jCBAlumnoItemStateChanged
 
@@ -198,6 +213,19 @@ public final class Inscripciones extends javax.swing.JInternalFrame {
        MateriasInscriptas.setSelected(true);
        Inscribir.setEnabled(false);
        AnularInscripcion.setEnabled(true);
+       
+       try{
+        Alumno alumno = (Alumno) jCBAlumno.getSelectedItem();
+        int idA = alumno.getIdAlumno();
+        InscripcionData insc = new InscripcionData();
+         BorrarFilas();
+            for (Materia ins : insc.ObtenerMateriasCursadas(idA)) {
+                modelo.addRow(new Object[]{ins.getIdMateria(), ins.getNombre(), ins.getAnioMateria()});   
+            }
+       }catch (NullPointerException ex){
+         JOptionPane.showMessageDialog(null, "Seleccione un alumno");
+         BorrarFilas();
+         } 
     }//GEN-LAST:event_MateriasInscriptasActionPerformed
 
     private void InscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InscribirActionPerformed
