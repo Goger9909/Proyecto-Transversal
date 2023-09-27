@@ -67,11 +67,6 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         Apellido.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Apellido.setText("Apellido: ");
 
-        jtApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtApellidoActionPerformed(evt);
-            }
-        });
         jtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtApellidoKeyTyped(evt);
@@ -384,10 +379,6 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
         }
 });
     }//GEN-LAST:event_jtDNIKeyTyped
-
-    private void jtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtApellidoActionPerformed
     //Instanciamos la clase AlumnoData como ad
     AlumnoData ad = new AlumnoData();
 
