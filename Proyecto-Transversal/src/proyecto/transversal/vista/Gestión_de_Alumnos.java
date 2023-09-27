@@ -353,7 +353,8 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                 int key = evt.getKeyChar();
     boolean letrasMin = key >= 97 && key <=122  ;
     boolean letrasMay = key >= 65 && key <= 90;
-    if(!(letrasMin || letrasMay)){
+    boolean espacio = key == 32;
+    if(!(letrasMin || letrasMay || espacio)){
         evt.consume();
     }
     }//GEN-LAST:event_jtApellidoKeyTyped
@@ -363,7 +364,8 @@ public class Gestión_de_Alumnos extends javax.swing.JInternalFrame {
                int key = evt.getKeyChar();
     boolean letrasMin = key >= 97 && key <=122  ;
     boolean letrasMay = key >= 65 && key <= 90;
-    if(!(letrasMin || letrasMay)){
+    boolean espacio = key == 32; // 32 espacio.
+    if(!(letrasMin || letrasMay || espacio)){
         evt.consume();
     }
     }//GEN-LAST:event_jtNombreKeyTyped
