@@ -198,5 +198,6 @@ public class InscripcionData {
             JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex.getMessage());
         }
    return alumnosMateria;  
-        } 
+  
+  } 
 }

@@ -9,10 +9,12 @@ public class Alumno {
     private String apellido, nombre;
     private LocalDate fechaNac;
     private boolean activo;
-
+    
+    
     public Alumno() {
     }
-
+    
+    // Constructor para traer un alumno
     public Alumno(int idAlumno, int dni, String apellido, String nombre, LocalDate fechaNac, boolean activo) {
         this.idAlumno = idAlumno;
         this.dni = dni;
@@ -22,7 +24,7 @@ public class Alumno {
         this.activo = activo;
     }
 
-   
+   // Constructor para creacion de un alumno
     public Alumno(int dni, String apellido, String nombre, LocalDate fechaNac, boolean activo) {
         this.dni = dni;
         this.apellido = apellido;
@@ -31,14 +33,13 @@ public class Alumno {
         this.activo = activo;
     }
 
+    //Getter y Setter
     public int getDni() {
         return dni;
     }
-
     public void setDni(int dni) {
         this.dni = dni;
     }
-
 
     public int getIdAlumno() {
         return idAlumno;
@@ -75,11 +76,9 @@ public class Alumno {
         this.activo = activo;
     }
 
+    //Para mostrat alumno en Formulario alumno, la clase Inscripciones
     @Override
     public String toString() {
         return "id-" + idAlumno + " " + apellido +" "+ nombre+ "-Dni:" + dni ;
     }
-    
-    
- 
 }

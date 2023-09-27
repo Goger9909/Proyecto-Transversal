@@ -52,6 +52,7 @@ public class Materia {
         this.activo = activo;
     }
 
+    //Para mostrat materia en Listado de alumno por materia, la clase Consulta_de_alumno_por_Materia
     @Override
     public String toString() {
         return  nombre + ", " + anioMateria  ;
